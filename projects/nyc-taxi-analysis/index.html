@@ -1,0 +1,214 @@
+---
+layout: single
+classes: wide
+title: NYC Taxi Analysis
+toc: true
+toc_label: "On this page"
+toc_sticky: true
+author_profile: true
+---
+
+<!-- Mermaid JS -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "mc", look: "handDrawn" });
+</script>
+
+<main>
+
+  <h2 id="nyc-taxi-fleet-analysis">NYC Taxi Fleet Analysis</h2>
+  <p>A data consulting case study using CRISP-DM and iterative framework loops.</p>
+
+  <h3 id="overview">1. Overview</h3>
+
+  <p>
+    When I discovered the NYC Taxi dataset, I saw it as the perfect playground to demonstrate
+    how a Data Consultant applies the CRISP-DM framework in practice.
+  </p>
+
+  <p>
+    This project simulates how I’d work with a client exploring how to enter and compete in the NYC taxi market,
+    from defining business objectives to building analytical solutions that guide real-world decisions.
+  </p>
+
+  <p>
+    The focus isn’t just on the data itself, but on the process: translating business strategy into measurable,
+    data-driven outcomes through structured frameworks, transparent ETL, and iterative refinement.
+  </p>
+
+  <h4>Key Outcomes:</h4>
+  <ul>
+    <li>Framework applied end-to-end with measurable business framing</li>
+    <li>Scalable, reproducible ETL pipeline</li>
+    <li>Reporting and modelling</li>
+    <li>Iterative improvements</li>
+  </ul>
+
+  <h3 id="process">2. Process</h3>
+
+  <p>
+    The process follows a cyclical framework, starting with the business defining its objectives.
+  </p>
+
+  <p>
+    Each iteration through the cycle deepens understanding and capability: as the business matures,
+    the questions become more complex, and each loop may introduce new datasets, analytical methods,
+    or performance metrics to support decision-making.
+  </p>
+
+  <div class="mermaid">
+    flowchart TB
+
+    A["Define Business Objective<br /><small>Set measurable business goals</small>"]
+    B["Acquire &amp; Explore Data<br /><small>Collect and understand data sources</small>"]
+    C["Enrich &amp; Transform<br /><small>Clean, join and prepare data</small>"]
+    D["Model &amp; Evaluate<br /><small>Test hypotheses and measure performance</small>"]
+    E["Deliver Insights<br /><small>Visualise and communicate findings</small>"]
+    F["Act &amp; Monitor<br /><small>Implement changes and track results</small>"]
+
+    A --> B --> C --> D --> E --> F -.-> A
+  </div>
+
+
+  <h3 id="framework-loop-1">3. Framework Loop 1 - Core Business Case and Project Setup</h3>
+
+  <h4 id="core-business-case">3.1 Core Business Case</h4>
+
+  <p>
+    <strong>Objective:</strong>
+    The business operates a fleet of 1,000 vehicles, each working 8 hours per day, 5 days per week.
+    The goal is to maximise total revenue by optimising fleet deployment, ensuring vehicles are in
+    the right place, at the right time, to capture demand efficiently.
+  </p>
+
+  <p>
+    This first loop focuses on building the analytical foundation: understanding trip patterns,
+    identifying high-demand zones, and developing a baseline for future optimisation.
+  </p>
+
+  <h4 id="etl-creation">3.2 ETL Creation</h4>
+
+  <p>
+    With the business objective defined, the first step was to design a reliable ETL
+    (Extract, Transform, Load) pipeline to process the NYC Taxi dataset efficiently and reproducibly.
+  </p>
+
+  <p>
+    This phase covers the Acquire &amp; Explore Data and Enrich &amp; Transform stages of the wider framework.
+  </p>
+
+  <p>
+    The pipeline was built around three data layers (Raw, Cleansed, and Curated), each serving a distinct purpose,
+    from storing unmodified source files to producing analysis-ready tables.
+  </p>
+  <p>
+    Please navigate <a href="{{ site.baseurl }}/projects/nyc-taxi-analysis/loop1.html">here</a> for more information on
+    the methodology used, and a walk through on the below diagram.
+
+  <pre class="mermaid">
+  ---
+  config:
+  layout: dagre
+  ---
+  flowchart TB
+  %% --- ETL PIPELINE WRAPPER ---
+  subgraph ETL["ETL Pipeline"]
+  direction TB
+
+  %% --- L0 ---
+  subgraph L0["L0 [Bronze] — Raw Layer"]
+  A1["Raw Source Files<br /><small>Eg CSV/Parquet</small>"]
+  end
+
+  %% --- L1 ---
+  subgraph L1["L1 [Silver] — Cleansed Layer"]
+  B1["Profile Data"]
+  B2["Standardise Data"]
+  B3["Cleanse Data"]
+  end
+
+  %% --- L2 ---
+  subgraph L2["L2 [Gold] — Curated Layer"]
+  C1["Aggregate Data"]
+  C2["Apply Business Logic"]
+  C3["Analytics / Reporting / Modelling"]
+  end
+  end
+
+  %% --- FLOWS ---
+  A1 --> B1 --> B2 --> B3 --> C1 --> C2 --> C3
+
+  %% --- STORAGE OUTPUT ---
+  DB[("SQL Database<br /><small>DuckDB Storage</small>")]
+
+  %% --- EXPORT CONNECTIONS ---
+  A1 -.-> DB
+  B3 -.-> DB
+  C3 -.-> DB
+  </pre>
+
+  </p>
+
+  <p>
+    At every stage, data quality checks were used to maintain consistency and traceability.
+  </p>
+
+  <p>
+    All code, documentation, and task tracking were managed through GitHub,
+    ensuring version control and transparency as the project evolved.
+  </p>
+
+  <h4 id="insights-and-actions">3.3 Insights and Actions</h4>
+
+  <p>
+    Deliver Insights and Act &amp; Monitor.
+  </p>
+
+  <h3 id="framework-loop-2">4. Framework Loop 2 – Business Strategy and Revenue Modelling</h3>
+
+  <p><strong>Define Business Objective</strong><br>
+    Create a model that optimises Fleet Utilisation.
+  </p>
+  <div class="mermaid">
+    flowchart TB
+
+    H["Start of Loop"]
+    A["Define Business Objective<br /><small>Understand the impact of external factors on demand. First external factor
+      to be examined is weather.</small>"]
+    B["Acquire &amp; Explore Data<br /><small>Collect and understand hourly weather data from -source-</small>"]
+    C["Enrich &amp; Transform<br /><small>Clean, join and prepare data, adding in relationships to existing data
+      set</small>"]
+    D["Model &amp; Evaluate<br /><small>Test hypotheses and measure impact of weather historically. Add data to
+      dashboard, create new views</small>"]
+    E["Deliver Insights<br /><small>Visualise and communicate findings</small>"]
+    F["Act &amp; Monitor<br /><small>Business to reassess fleet deployment accounting for the expected changes in
+      demand.</small>"]
+    G["End of Loop"]
+
+    H -.-> A --> B --> C --> D --> E --> F -.-> G
+  </div>
+
+  <h3 id="framework-loop-3">5. Framework Loop 3 – Forecasting and Weather Impacts</h3>
+
+  <div class="mermaid">
+    flowchart TB
+
+    H["Start of Loop"]
+    A["Define Business Objective<br /><small>Understand the impact of external factors on demand. First external factor
+      to be examined is weather.</small>"]
+    B["Acquire &amp; Explore Data<br /><small>Collect and understand hourly weather data from -source-</small>"]
+    C["Enrich &amp; Transform<br /><small>Clean, join and prepare data, adding in relationships to existing data
+      set</small>"]
+    D["Model &amp; Evaluate<br /><small>Test hypotheses and measure impact of weather historically. Add data to
+      dashboard, create new views</small>"]
+    E["Deliver Insights<br /><small>Visualise and communicate findings</small>"]
+    F["Act &amp; Monitor<br /><small>Business to reassess fleet deployment accounting for the expected changes in
+      demand.</small>"]
+    G["End of Loop"]
+
+    H -.-> A --> B --> C --> D --> E --> F -.-> G
+  </div>
+
+
+
+</main>

@@ -1,0 +1,252 @@
+---
+layout: single
+classes: wide
+title: Loop 1 & ETL
+toc: true
+toc_label: "On this page"
+toc_sticky: true
+author_profile: true
+---
+
+<!-- Mermaid JS -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "mc", look: "handDrawn" });
+</script>
+
+<main>
+
+  <section id="nyc-etl-overview">
+
+    <h2 id="Overview">ETL Overview</h2>
+
+    <p>
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Docs ↗</a> |
+      <a href="https://github.com/jonnylgreenwood/Business-Insights/issues/84" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Project Management ↗</a>
+    </p>
+
+    <p>
+      For this project, data is sourced from multiple online files, each differing in structure, format, and quality..
+      and they're updated on an ongoing basis.
+      This creates complexity that requires a structured, auditable approach.
+      To manage this, I built a <strong>local ETL solution</strong> using <strong>DuckDB</strong>, organised into three
+      layers:
+    </p>
+
+    <ul>
+      <li><strong>L0 [Bronze]</strong> – Ingest high-volume source files to preserve data fidelity and enable auditing.
+      </li>
+      <li><strong>L1 [Silver]</strong> – Clean, reshape, and unify data for relational consistency.</li>
+      <li><strong>L2 [Gold]</strong> – Aggregate and prepare data for analysis, modelling, and reporting.</li>
+    </ul>
+
+    <p>The diagram below illustrates how data moves through these layers into DuckDB storage.</p>
+    <pre class="mermaid">
+---
+config:
+  layout: dagre
+---
+flowchart TB
+    %% --- ETL PIPELINE WRAPPER ---
+    subgraph ETL["ETL Pipeline"]
+        direction TB
+
+        %% --- L0 ---
+        subgraph L0["L0 [Bronze] — Raw Layer"]
+            A1["Raw Source Files<br/><small>Eg CSV/Parquet</small>"]
+        end
+
+        %% --- L1 ---
+        subgraph L1["L1 [Silver] — Cleansed Layer"]
+            B1["Profile Data"]
+            B2["Standardise Data"]
+            B3["Cleanse Data"]
+        end
+
+        %% --- L2 ---
+        subgraph L2["L2 [Gold] — Curated Layer"]
+            C1["Aggregate Data"]
+            C2["Apply Business Logic"]
+            C3["Analytics / Reporting / Modelling"]
+        end
+    end
+
+    %% --- FLOWS ---
+    A1 --> B1 --> B2 --> B3 --> C1 --> C2 --> C3
+
+    %% --- STORAGE OUTPUT ---
+    DB[("SQL Database<br/><small>DuckDB Storage</small>")]
+
+    %% --- EXPORT CONNECTIONS ---
+    A1 -.-> DB
+    B3 -.-> DB
+    C3 -.-> DB
+</pre>
+
+    <p>
+      This is a critical function of the first loop, covering the initial setup and reasoning.
+      It’s worth noting that further loops may ingest new data sources and repeat parts of this process.
+    </p>
+
+    <p>
+    <h2 id="file-storage">File Storage</h2>
+    </p>
+
+    <p>
+      Before diving into the transformation layers, this section explains how data is physically stored and structured.
+      The goal here is to keep everything traceable and reproducible, ensuring that every file and table can be linked
+      back
+      to its original source.
+    </p>
+    <p>
+      A DuckDB database is created, and layers are added as schema using SQL.
+      This keeps all data in one location and simplifies access to tables later (e.g. <code>l0.example_data</code>,
+      <code>l2.dim_locations</code>).
+    </p>
+
+
+
+
+    <h2 id="l0">L0 [Bronze]</h2>
+
+    <p>
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Docs ↗</a> |
+      <a href="https://github.com/jonnylgreenwood/Business-Insights/issues/104" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Project Management ↗</a>
+    </p>
+
+    <p>
+      L0 is the raw layer. It captures the data exactly as received from the NYC Government open-data portal, plus any
+      other data sources ingested in later cycles.
+    </p>
+
+
+    <h3 id="l0-Data-Acquisition">Data Acquisition</h3>
+    <p>
+      Python is used to scrape Parquet files directly from the NYC Government website, looping through the various files
+      and placing them in a
+      <code>data/raw_data</code> directory.
+    </p>
+
+    <h3 id="L0-Load">L0 Load</h3>
+    <p>
+      The files are loaded exactly as-is into the database as separate tables.
+      A control table defines which files are loaded to maintain transparency and reproducibility.
+    </p>
+
+
+    <h2 id="l1">L1 [Silver]</h2>
+
+
+    <p>
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Docs ↗</a> |
+      <a href="https://github.com/jonnylgreenwood/Business-Insights/issues/102" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Project Management ↗</a>
+    </p>
+
+    <p>
+      The Silver layer focuses on cleaning, standardising, and validating the raw data.
+      It’s where inconsistencies are corrected, schemas are aligned, and initial business rules are applied to make the
+      data
+      structurally consistent across sources.
+
+
+
+
+    </p>
+    <h3 id="l1-Data-Profiling">Data Profiling</h3>
+    <p>
+      Before working with the data, I conducted sampling by source to understand: which columns exist and how they
+      differ,
+      what each column represents, what types of data are stored, and which issues to address proactively.
+    </p>
+
+    <p>This led to several key strategies:</p>
+
+    <h4 id="l1-Schema-Management">Schema Management</h4>
+    <p>
+      There are three trip sources (Yellow, Green, and FHV taxis), each delivered as monthly Parquet files.
+      Differences in naming conventions and columns meant I aggregated each source into its own L1 table,
+      standardising naming using a <code>unified_name</code> table.
+      Information about what each column represented was provided by the source website.
+    </p>
+
+
+
+    <h4 id="l1-Data-Quality-Handling">Data Quality Handling</h4>
+    <p>
+      Profiling (sum, min, max, null counts) helped identify quality issues and shape business rules applied in L1 and
+      L2.
+      Examples include:
+    </p>
+
+    <ul>
+      <li><strong>Trip distance outliers</strong> – Values > 300,000 miles detected → Flag any trips > 150 miles.</li>
+      <li><strong>Missing passenger count</strong> – High volume of NULL <code>passenger_count</code> values → Impute
+        NULL → 1 passenger.</li>
+      <li><strong>Negative fares</strong> – Negative <code>fare_amount</code> values → Retain, flag, and treat as
+        refunds or adjustments.</li>
+    </ul>
+
+
+    <h3 id="L1-Load">L1 Load</h3>
+    <p>
+      Trips are grouped by source and placed into fact tables.
+      During the push from L0 → L1, field names and data types are redefined based on earlier schema analysis.
+      Longitude and latitude values are extracted from zone data for Power BI compatibility.
+    </p>
+
+    <h3 id="l1-Data-Validation">Data Validation</h3>
+    <p>
+      Record and null counts are used to ensure no data is dropped during this process.
+    </p>
+
+    <h2 id="l2">L2 &#91;Gold&#93;</h2>
+    <p>
+
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Docs ↗</a> |
+      <a href="https://github.com/jonnylgreenwood/Business-Insights/issues/103" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Project Management ↗</a>
+    </p>
+
+
+    <p>
+      This layer contains data in its final form, ready for analytics and modelling.
+      For the first cycle, the main output is an aggregated table of all NYC taxi trips for the last twelve months, and
+      is a critical base table for future loops.
+    </p>
+
+
+    <h3 id="l2-Ingestions-and-Transformations">Ingestions and Transformations</h3>
+    <p>
+      All trip sources are aggregated from L1 into a single L2 trips fact table.
+      Data is cleansed using the business rules defined earlier, filtering out impossible trip distances,
+      imputing passenger counts, and adding columns such as <code>speed_mph</code>.
+      Additional dimension tables (calendar, payment types, locations) are created, making the data ready for reporting
+      and modelling.
+    </p>
+
+    <h3 id="l2-Data-Validation">Data Validation</h3>
+    <p>
+      Record and null counts confirm no data loss during this final aggregation process.
+    </p>
+
+
+  </section>
