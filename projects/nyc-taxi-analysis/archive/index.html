@@ -1,0 +1,309 @@
+---
+layout: single
+classes: wide
+title: NYC Taxi Analysis
+toc: true
+toc_label: "On this page"
+toc_sticky: true
+author_profile: true
+---
+
+<!-- Mermaid JS -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "mc", look: "handDrawn" });
+</script>
+
+
+<div class="home">
+
+  <h2 id="introduction">Introduction</h2>
+  <p>
+    When I discovered the NYC Taxi dataset, I saw it as the perfect playground for building a complete data workflow —
+    large-scale, sourced from multiple systems, evolving over time, and released monthly. In other words, it reflects
+    the messy, real-world challenges of data engineering and analytics.
+  </p>
+  <p>
+    My goal wasn’t just to process data, but to design a robust, repeatable pipeline that could support real business
+    insights. The workflow includes:
+  </p>
+  <ul>
+    <li>Extracting and storing high-volume trip data across multiple years and sources in an L0 [Bronze] database</li>
+    <li>Profiling samples to uncover quality issues and inform both technical and business rules</li>
+    <li>Standardizing schema and structure in an L1 [Silver] database</li>
+    <li>Transforming and enriching data in an L2 [Gold] database. This data is suitable for use in business logic, KPIs,
+      reporting, and analytical models</li>
+    <li>Defining Business Objectives to guide dashboard design and ensure insights are decision-oriented</li>
+    <li>Surfacing performance trends, outliers, and demand patterns through intuitive data visualization</li>
+  </ul>
+  <p>
+    The dataset is published monthly on the
+    <a href="https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page" target="_blank">NYC Government website</a>.
+  </p>
+
+  <body>
+
+    <pre class="mermaid">
+  flowchart TB
+    subgraph subGraph0["Raw Data Source"]
+        A1["CSV/Parquet Files"]
+        A2["API Feeds"]
+    end
+    subgraph ETL["Python & DuckDB Layer"]
+        B1["Data Extraction"]
+        B2["Data Cleaning & Profiling"]
+        B3["Transform & Load"]
+    end
+    subgraph Storage["Storage"]
+        direction TB
+        C1[("DuckDB Database")]
+    end
+    subgraph Analytics["Analytics"]
+        D1["Power BI"]
+        D2["Python Notebooks"]
+        D3["SQL"]
+    end
+    subgraph Output["Output"]
+        E1["Dashboards"]
+        E2["Reports / Exports"]
+    end
+    A1 --> B1
+    A2 --> B1
+    B1 --> B2 --> B3
+    B1 -.-> C1
+    B2 -.-> C1
+    B3 --> C1
+    C1 --> D1 & D2 & D3
+    D1 --> E1
+    D2 --> E2
+    D3 --> E2
+  </pre>
+  </body>
+
+  <h2 id="process">Process</h2>
+  <p>
+    The ETL (Extract, Transform, Load) process ingests raw data such as trip and location
+    information, cleans and reshapes it. This creates analytics-ready tables, which are then
+    used in reporting in Power BI, what-if scenario modelling, and data quality testing. Once
+    the raw data was loaded into L0 [Bronze], it could be profiled to inform the next steps.
+    The pipeline follows a layered approach (L0 → Data Profiling → L1 → L2 → Reporting).
+  </p>
+
+  <table id="etl-summary">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Stage</th>
+        <th>Description</th>
+        <th>Key Steps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Project Setup</td>
+        <td>Configure environment, initialize database, and establish folder hierarchy for ETL workflows.</td>
+        <td>Tools &amp; Environment, Database Creation</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>L0 – Raw Data</td>
+        <td>Ingest high-volume source files to preserve data fidelity and enable auditing.</td>
+        <td>Data Extraction, L0 Load</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Data Profiling</td>
+        <td>Assess schema integrity and data quality to define technical and business rules.</td>
+        <td>Schema Management, Data Quality Handling</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>L1 – Silver</td>
+        <td>Clean, reshape, and unify data for relational consistency.</td>
+        <td>Ingestion, Schema Standardisation, Data Validation</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>L2 – Analytics-Ready</td>
+        <td>Transform and enrich data to support KPIs and analytical models.</td>
+        <td>Transformations</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Reporting &amp; Modelling</td>
+        <td>Define business objectives, model insights, and visualize performance trends for decision-making.</td>
+        <td>Business Objectives, Dashboard Design, Modelling</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="project-setup">Project Setup</h3>
+  <p>
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/tree/main/etl/00_setup" target="_blank"><i
+        class="fab fa-github"></i> Code ↗</a> |
+    <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Process-Documentation#00_project_setup"
+      target="_blank"><i class="fab fa-github"></i> Docs ↗</a>
+  </p>
+  A SQL scripts creates the Duck Database with the schemas l0, l1, l2 & dq.
+
+  <h3 id="l0-bronze">L0 – Bronze</h3>
+  <p>
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/tree/main/etl/01_l0" target="_blank"><i
+        class="fab fa-github"></i> Code ↗</a> |
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/blob/main/docs/db_profiles/l0.md" target="_blank"><i
+        class="fab fa-github"></i> DB Profile ↗</a>
+  </p>
+  <h4 id="data-extraction">Data Extraction</h4>
+  <p>
+    A Python script downloads Parquet files directly from the
+    <a href="https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page" target="_blank">NYC Government website</a>
+    and places them in the <code>data/raw_data</code> directory.
+  </p>
+  <h4 id="l0-load">L0 Load</h4>
+  <p>
+    A control table is created and seeded, defining exactly which files get loaded into L0.
+    A Python script then ingests these into L0 [Bronze] as-is and stores each file as a separate table.
+  </p>
+
+  <h3 id="data-profiling">Data Profiling</h3>
+  <p>
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/tree/main/etl/00_setup/data_investigation"
+      target="_blank"><i class="fab fa-github"></i> Code ↗</a> |
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/wiki/Data-Investigation" target="_blank"><i
+        class="fab fa-github"></i> Docs ↗</a>
+  </p>
+  <h4 id="schema-management">Schema Management</h4>
+  <p>
+    There are three trip sources (Yellow, Green, and FHV taxis), each delivered as monthly Parquet files.
+    Several samples were taken across each source to understand schema similarities and naming variations.
+    At L1 (Silver), names are standardised using the unified_name table. Taxi Zone maps are also pulled from this
+    source.
+  </p>
+  <h4 id="quality-checks">Data Quality Handling</h4>
+  <p>
+    Profiling the data (sum, min, max, null counts) helped identify quality issues and shape
+    the business rules applied in L1 and L2. A few examples include:
+  </p>
+  <ul>
+    <li><strong>Trip distance outliers</strong><br>
+      Observation: Values &gt; 300,000 miles detected<br>
+      Rule: Flag any trips &gt; 150 miles
+    </li>
+    <li><strong>Passenger count missing</strong><br>
+      Observation: High volume of NULL passenger_count values<br>
+      Rule: Impute NULL → 1 passenger
+    </li>
+    <li><strong>Negative fares</strong><br>
+      Observation: Fare_amount includes negative values<br>
+      Rule: Retain, flag, and treat as refunds or adjustments for further investigation
+    </li>
+  </ul>
+
+  <h3 id="l1-silver">L1 – Silver</h3>
+  <p>
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/tree/main/etl/02_l1" target="_blank"><i
+        class="fab fa-github"></i> Code ↗</a> |
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/blob/main/docs/db_profiles/l1.md" target="_blank"><i
+        class="fab fa-github"></i> DB Profile ↗</a>
+  </p>
+  <h4 id="ingestion-schema">Ingestion &amp; Schema Standardisation</h4>
+  <p>
+    Trips are grouped by source and placed into fact tables. During the push from L0 → L1,
+    field names and data types are redefined based on the schema analysis from earlier.
+    The longitudes and latitudes are extracted from the Zone data for a more Power BI compatible format.
+  </p>
+  <h4 id="l1-validation">Data Validation</h4>
+  <p>
+    Record and null counts are used to ensure no data is dropped during this process.
+  </p>
+
+  <h3 id="l2-gold">L2 – Gold</h3>
+  <p>
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/tree/main/etl/03_l2" target="_blank"><i
+        class="fab fa-github"></i> Code ↗</a> |
+    <a href="https://github.com/jonnylgreenwood/nyc-taxi-analytics/blob/main/docs/db_profiles/l2.md" target="_blank"><i
+        class="fab fa-github"></i> DB Profile ↗</a>
+  </p>
+  <h4 id="ingestions-transformations">Ingestions and Transformations</h4>
+  <p>
+    All trip sources are aggregated from L1 into a single L2 trips fact table. During this process,
+    the data is cleansed using the Business Rules defined earlier. Examples include filtering
+    out impossible trip distances, imputing passenger counts and adding additional columns such as speed_mph.
+    Additional dimension tables like calendar, payment types and locations are created.
+    This data is now ready for reporting and modelling.
+  </p>
+  <h4 id="l2-validation">Data Validation</h4>
+  <p>
+    Record and null counts are used to ensure no data is dropped during this process.
+  </p>
+
+  <h3 id="reporting-modelling">Reporting and Modelling</h3>
+  <p>
+    <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Power-BI-Documentation" target="_blank"><i
+        class="fab fa-github"></i> Docs ↗</a> |
+    <a href="http://localhost:4000/portfolio-site/projects/nyc-taxi-analysis/insights.html" target="_blank"><i
+        class="fab fa-github"></i> Insights ↗</a>
+  </p>
+  <h4 id="business-objectives">Business Objectives</h4>
+  <p>
+    With the base data in place, the focus shifts towards a business consulting perspective.
+    Some questions may not be answerable with the initial datasets, so prioritising value-add
+    and next-stage development becomes important.
+  </p>
+
+  <h4 id="operational-efficiency">Operational Efficiency</h4>
+  <p><strong>Questions to Explore:</strong></p>
+  <ul>
+    <li>How long are average trip durations by time of day or borough?</li>
+    <li>Where are pickup–drop-off imbalances?</li>
+    <li>What’s the idle time between rides?</li>
+    <li>What’s the impact of weather or events?</li>
+  </ul>
+  <p><strong>Metrics to highlight:</strong> Avg. trip distance, duration, fare/hour, utilisation rate, occupancy rate.
+  </p>
+
+  <h4 id="revenue-pricing">Revenue &amp; Pricing Strategy</h4>
+  <p><strong>Questions to Explore:</strong></p>
+  <ul>
+    <li>Which areas or hours yield the highest fares per mile/minute?</li>
+    <li>How do tips correlate with fare size, time, or passenger count?</li>
+    <li>Are there seasonal or event-based pricing opportunities?</li>
+  </ul>
+  <p><strong>Metrics to highlight:</strong> Revenue/hour, fare per mile, average tip %, daily/weekly revenue trendlines.
+  </p>
+
+  <h4 id="customer-experience">Customer Experience &amp; Demand Patterns</h4>
+  <p><strong>Questions to Explore:</strong></p>
+  <ul>
+    <li>What times and locations experience the longest waits or highest cancellations?</li>
+    <li>Are there underserved neighborhoods?</li>
+    <li>How do different service types (Yellow, Green, FHV) compete?</li>
+  </ul>
+  <p><strong>Metrics to highlight:</strong> Trip volume by hour/day/location, wait time proxy, share by service type.
+  </p>
+
+  <h4 id="city-planning">City &amp; Infrastructure Planning</h4>
+  <p><strong>Questions to Explore:</strong></p>
+  <ul>
+    <li>How does traffic congestion impact trip time and cost?</li>
+    <li>Which routes or intersections are most common — where could infrastructure improve?</li>
+    <li>What’s the impact of new policies (e.g., congestion pricing zones, EV incentives)?</li>
+  </ul>
+  <p><strong>Metrics to highlight:</strong> Avg. speed per zone/time, congestion surcharge frequency, emissions proxy
+    (trip distance × count).</p>
+
+  <body>
+
+    <pre class="mermaid">
+flowchart TB
+    A["Define Business Objective"]
+    B["Acquire & Explore Data"]
+    C["Enrich & Transform"]
+    D["Model & Evaluate"]
+    E["Deliver Insights"]
+    F["Act & Monitor"]
+
+    A --> B --> C --> D --> E --> F -.-> A
+  </pre>
+  </body>
