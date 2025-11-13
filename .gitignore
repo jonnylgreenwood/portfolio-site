@@ -4,3 +4,4 @@ vendor/
 .DS_Store
 _data/ui-text.yml
 cv/Best practices for ETL and ELT pipelines with Apache Airflow 3.pdf
+cv/NYC Taxi Analysis.pdf
