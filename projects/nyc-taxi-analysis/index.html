@@ -69,6 +69,22 @@ author_profile: true
     A --> B --> C --> D --> E --> F -.-> A
   </div>
 
+  <div class="mermaid">
+flowchart TB
+
+    subgraph GUI["GUI (Prototype, Explore, Transform, Validate)"]
+        direction TB
+        A["Define Business Objective<br /><small>Set measurable business goals</small>"]
+        B["Acquire & Explore Data<br /><small>Collect and understand data sources</small>"]
+        C["Enrich & Transform<br /><small>Clean, join and prepare data</small>"]
+        D["Model & Evaluate<br /><small>Test hypotheses and measure performance</small>"]
+        E["Deliver Insights<br /><small>Visualise and communicate findings</small>"]
+    end
+
+    F["SQL / Automation<br /><small>Implement changes and track results</small>"]
+
+    A --> B --> C --> D --> E --> F -.-> A
+  </div>
 
   <h3 id="framework-loop-1">3. Framework Loop 1 - Core Business Case and Project Setup</h3>
 
