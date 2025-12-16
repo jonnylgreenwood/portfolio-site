@@ -1,0 +1,40 @@
+    <pre class="mermaid">
+---
+config:
+  layout: dagre
+---
+flowchart TB
+ subgraph L0["L0 — Raw Layer"]
+        A1["Raw Source Files<br><small>Eg CSV/Parquet</small>"]
+  end
+subgraph L4["Data Profiling"]
+        B1["Profile Data"]
+  end
+ subgraph L1["L1 - Cleansed Layer"]
+        B2["Standardise Data"]
+        B3["Cleanse Data"]
+  end
+ subgraph L2["L2 — Curated Layer"]
+        C1["Aggregate Data"]
+        C2["Apply Business Logic"]
+        C3["Analytics / Reporting / Modelling"]
+  end
+ subgraph ETL["ETL Pipeline"]
+    direction TB
+        L0
+        L4
+        L1
+        L2
+  end
+    A1 --> B1
+    B1 --> B2
+    B2 --> B3
+    B3 --> C1
+    C1 --> C2
+    C2 --> C3
+    A1 -.-> DB[("Snowflake<br /><small>Warehouse + dbt</small>")]
+    B3 -.-> DB
+    C3 -.-> DB
+    DB <-.-> LR[["Local Git Repo"]]
+    DB <-.-> KN[["External Tools"]]
+</pre>
