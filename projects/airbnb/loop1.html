@@ -1,0 +1,192 @@
+---
+layout: single
+classes: wide
+title: Loop 1 & ETL
+toc: true
+toc_label: "On this page"
+toc_sticky: true
+author_profile: true
+---
+
+<!-- Mermaid JS -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "mc", look: "handDrawn" });
+</script>
+
+<main>
+
+  <section id="nyc-etl-overview">
+
+    <h2 id="Overview">ETL Overview</h2>
+
+    <p>
+      <a href="https://github.com/jonnylgreenwood/airbnb-snowflake-dbt/tree/main/airbnb" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
+      <a href="{{ site.baseurl }}/projects/airbnb/target/" target="_blank"><img src="{{ site.baseurl }}/projects/airbnb/images/dbt Logos/dbt-bit-standalone.png"
+          alt="dbt Docs" width="20" height="20" style="vertical-align:middle; margin-right:4px;">dbt Docs ↗</a> |
+      <a href="https://app.snowflake.com/hukihlk/kvb89980/#/workspaces/ws/USER%24/PUBLIC/airbnb-snowflake-dbt" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@16.2.0/icons/snowflake.svg" alt="Snowflake" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Snowflake ↗</a> |
+      <a href="https://github.com/jonnylgreenwood/Business-Insights/issues/84" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Project Management ↗</a>
+    </p>
+
+    <p>
+      For this project, data is sourced from multiple online files, each differing in structure, format, and quality..
+      and they're updated on an ongoing basis.
+      This creates complexity that requires a structured, auditable approach.
+      To manage this, I built a <strong>cloud ETL solution</strong> using <strong>Snowflake</strong>, organised into three
+      layers:
+    </p>
+
+    <ul>
+      <li><strong>L0 [Bronze]</strong> – Ingest high-volume source files to preserve data fidelity and enable auditing.
+      </li>
+      <li><strong>L1 [Silver]</strong> – Clean, reshape, and unify data for relational consistency.</li>
+      <li><strong>L2 [Gold]</strong> – Aggregate and prepare data for analysis, modelling, and reporting.</li>
+    </ul>
+
+    <p>The diagram below illustrates how data moves through these layers into DuckDB storage.</p>
+
+{% include diagrams/airbnb-etl.html %}
+
+    <p>
+      This is a critical function of the first loop, covering the initial setup and reasoning.
+      It’s worth noting that further loops may ingest new data sources and repeat parts of this process.
+    </p>
+
+    <p>
+    <h2 id="file-storage">File Storage</h2>
+    </p>
+
+    <p>
+      Before diving into the transformation layers, this section explains how data is stored and structured.
+      The goal here is to keep everything traceable and reproducible, ensuring that every file and table can be linked
+      back
+      to its original source.
+    </p>
+    <p>
+      A Snowflake database is created, and dbt folder structuring, sources, project files and models are used to define the schema.
+      This keeps all data in one location and simplifies access to tables later (e.g. <code>airbnb.l0.example_data</code>,
+      <code>l2.fact_reviews</code>).
+    </p>
+
+
+
+
+    <h2 id="l0">L0 [Bronze]</h2>
+    <p>
+      L0 is the raw layer. It captures the data exactly as received from the <a href="https://insideairbnb.com/get-the-data/">Inside Airbnb open-data portal</a>, plus any
+      other data sources ingested in later cycles.
+    </p>
+
+
+    <h3 id="l0-Data-Acquisition">Data Acquisition</h3>
+    <p>
+      Python is used to scrape csv.gz files directly from the Inside Airbnb website, looping through the various files
+      and placing them in a
+      <code>data/raw_data</code> directory. Python is then used to convert the csv.gz files to .parquet before being uploaded to Snowflake. I chose to do this in Python because handling errors is much easier than in a Snowflake CSV upload.
+    </p>
+
+    <h3 id="L0-Load">L0 Load</h3>
+    <p>
+      The files are loaded exactly as-is into the database as separate tables.
+    </p>
+
+
+    <h2 id="l1">L1 [Silver]</h2>
+
+    <p>
+      The Silver layer focuses on cleaning, standardising, and validating the raw data.
+      It’s where inconsistencies are corrected, schemas are aligned, and initial business rules are applied to make the
+      data
+      structurally consistent across sources.
+
+
+
+
+    </p>
+    <h3 id="l1-Data-Profiling">Data Profiling</h3>
+    <p>
+      Before working with the data, I conducted sampling by source to understand: which columns exist and how they
+      differ,
+      what each column represents, what types of data are stored, and which issues to address proactively.
+    </p>
+<!-- 
+    <p>This led to several key strategies:</p>
+
+    <h4 id="l1-Schema-Management">Schema Management</h4>
+    <p>
+      There are three trip sources (Yellow, Green, and FHV taxis), each delivered as monthly Parquet files.
+      Differences in naming conventions and columns meant I aggregated each source into its own L1 table,
+      standardising naming using a <code>unified_name</code> table.
+      Information about what each column represented was provided by the source website.
+    </p>
+
+
+
+    <h4 id="l1-Data-Quality-Handling">Data Quality Handling</h4>
+    <p>
+      Profiling (sum, min, max, null counts) helped identify quality issues and shape business rules applied in L1 and
+      L2.
+      Examples include:
+    </p>
+
+    <ul>
+      <li><strong>Trip distance outliers</strong> – Values > 300,000 miles detected → Flag any trips > 150 miles.</li>
+      <li><strong>Missing passenger count</strong> – High volume of NULL <code>passenger_count</code> values → Impute
+        NULL → 1 passenger.</li>
+      <li><strong>Negative fares</strong> – Negative <code>fare_amount</code> values → Retain, flag, and treat as
+        refunds or adjustments.</li>
+    </ul> -->
+
+
+    <h3 id="L1-Load">L1 Load</h3>
+    <p>
+      Trips are grouped by source and placed into fact tables.
+      During the push from L0 → L1, field names and data types are redefined based on earlier schema analysis.
+    </p>
+<!-- 
+    <h3 id="l1-Data-Validation">Data Validation</h3>
+    <p>
+      Record and null counts are used to ensure no data is dropped during this process.
+    </p> -->
+
+    <h2 id="l2">L2 &#91;Gold&#93;</h2>
+    <p>
+
+      <!-- <a href="https://github.com/jonnylgreenwood/airbnb-snowflake-dbt/tree/main/airbnb/models/l2" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
+      <a href="" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Docs ↗</a> |
+      <a href="https://github.com/jonnylgreenwood/Business-Insights/issues/103" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Project Management ↗</a>
+    </p> -->
+
+
+    <p>
+      This layer contains data in its final form, ready for analytics and modelling.
+      For the first cycle, the main output is an aggregated table of all NYC taxi trips for the last twelve months, and
+      is a critical base table for future loops.
+    </p>
+<!-- 
+
+    <h3 id="l2-Ingestions-and-Transformations">Ingestions and Transformations</h3>
+    <p>
+      All trip sources are aggregated from L1 into a single L2 trips fact table.
+      Data is cleansed using the business rules defined earlier, filtering out impossible trip distances,
+      imputing passenger counts, and adding columns such as <code>speed_mph</code>.
+      Additional dimension tables (calendar, payment types, locations) are created, making the data ready for reporting
+      and modelling.
+    </p>
+
+    <h3 id="l2-Data-Validation">Data Validation</h3>
+    <p>
+      Record and null counts confirm no data loss during this final aggregation process.
+    </p> -->
+
+
+  </section>

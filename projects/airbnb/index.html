@@ -1,0 +1,140 @@
+---
+layout: single
+classes: wide
+title: Airbnb Analysis
+toc: true
+toc_label: "On this page"
+toc_sticky: true
+author_profile: true
+---
+
+<!-- Mermaid JS -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "mc", look: "handDrawn" });
+</script>
+
+<main>
+
+  <h2 id="airbnb-analysis">Airbnb</h2>
+  <p>A data consulting case study using CRISP-DM and iterative framework loops, incl snowflake and dbt.</p>
+
+  <h3 id="overview">1. Overview</h3>
+
+  <p>
+    After formalising working processes into the CRIPSR methodology with dbt, I wanted to use this approach on cloud-based warehousing.
+
+    For this, I chose to use SnowFlake due to it's popularity in the market and my interest in learning more about it.
+  </p>
+
+  <p>
+    This project simulates how I’d work with a client exploring how to enter into the airbnb market.
+  </p>
+
+  <p>
+    The focus isn’t just on the data itself, but on the process: translating business strategy into measurable,
+    data-driven outcomes through structured frameworks, transparent ETL, and iterative refinement.
+  </p>
+
+  <h4>Key Outcomes:</h4>
+  <ul>
+    <li>Framework applied end-to-end with measurable business framing</li>
+    <li>Scalable, reproducible ETL pipeline</li>
+    <li>Reporting and modelling</li>
+    <li>Iterative improvements</li>
+  </ul>
+
+  <h3 id="process">2. Process</h3>
+
+  <p>
+    The process follows a cyclical framework, starting with the business defining its objectives.
+  </p>
+
+  <p>
+    Each iteration through the cycle deepens understanding and capability: as the business matures,
+    the questions become more complex, and each loop may introduce new datasets, analytical methods,
+    or performance metrics to support decision-making.
+  </p>
+
+  <div class="mermaid">
+    flowchart TB
+
+    A["Define Business Objective<br /><small>Set measurable business goals</small>"]
+    B["Acquire &amp; Explore Data<br /><small>Collect and understand data sources</small>"]
+    C["Enrich &amp; Transform<br /><small>Clean, join and prepare data</small>"]
+    D["Model &amp; Evaluate<br /><small>Test hypotheses and measure performance</small>"]
+    E["Deliver Insights<br /><small>Visualise and communicate findings</small>"]
+    F["Act &amp; Monitor<br /><small>Implement changes and track results</small>"]
+
+    A --> B --> C --> D --> E --> F -.-> A
+  </div>
+
+  <h3 id="tooling-overview">Tooling Overview: dbt & Snowflake</h3>
+
+<p>
+  This project uses Snowflake as the cloud data warehouse and dbt for data transformation and modelling.
+  
+  Together, they enable:
+  <ul>
+  <li>A centralised, cloud-based single source of truth</li>
+  <li>Clear separation between raw, cleansed, and curated data layers</li>
+  <li>Reproducible, version-controlled transformations</li>
+  <li>Transparent business logic embedded directly in SQL models</li>
+  <li>Safe iteration as business questions evolve</li>
+  </ul>
+  The result is a structured analytics workflow that supports repeatable analysis, reliable reporting, and incremental decision-making.
+</p>
+
+  <h3 id="framework-loop-1">3. Framework Loop 1 - Core Business Case and Project Setup</h3>
+
+  <h4 id="core-business-case">3.1 Core Business Case</h4>
+
+  <p>
+    <strong>Objective:</strong>
+    Understand the volume of bookings per region, and the neighbourhoods with the most desirable properties.
+  </p>
+
+  <p>
+    This first loop focuses on building the analytical foundation: understanding trip patterns,
+    identifying high-demand zones, and developing a baseline for future optimisation.
+  </p>
+
+  <h4 id="etl-creation">3.2 ETL Creation</h4>
+
+  <p>
+    With the business objective defined, the first step was to design a reliable ETL
+    (Extract, Transform, Load) pipeline to process the Airbnb dataset efficiently and reproducibly.
+  </p>
+
+  <p>
+    This phase covers the Acquire &amp; Explore Data and Enrich &amp; Transform stages of the wider framework.
+  </p>
+
+  <p>
+    The pipeline was built around three data layers (Raw, Cleansed, and Curated), each serving a distinct purpose,
+    from storing unmodified source files to producing analysis-ready tables.
+  </p>
+  <p>
+    Please navigate <a href="{{ site.baseurl }}/projects/airbnb/loop1.html">here</a> for more information on
+    the methodology used, and a walk through on the below diagram.
+
+{% include diagrams/airbnb-etl.html %}
+
+  </p>
+
+  <p>
+    At every stage, data quality checks were used to maintain consistency and traceability.
+  </p>
+
+  <p>
+    All code, documentation, and task tracking were managed through GitHub,
+    ensuring version control and transparency as the project evolved.
+  </p>
+
+  <h4 id="insights-and-actions">3.3 Insights and Actions</h4>
+
+  <p>
+    Deliver Insights and Act &amp; Monitor.
+  </p>
+
+</main>
