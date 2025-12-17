@@ -698,3 +698,702 @@
 20:10:18.886584 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
 20:10:18.886588 [info ]: Finished analyzing [  0.13s] (6 nodes, 0 skipped, 0 errors)
 20:10:18.889170 [info ]: Cached model count updated: 6 models (accurate)
+==================== 2025-12-17T10:12:00.326331Z | e5a9b4ff-a0bb-47ba-9c64-55ab781a90a7 ====================
+10:12:00.328343 [info ]: Starting dbt LSP server
+10:12:00.328719 [info ]: Connecting to LSP client on port 8000
+10:12:00.329683 [info ]: Successfully connected to LSP client
+10:12:00.329688 [info ]: Creating LSP service...
+10:12:00.385097 [info ]: Creating LSP server...
+10:12:00.385110 [info ]: Starting LSP server...
+10:12:00.429028 [info ]: Started loading project
+10:12:00.643863 [info ]: Started parsing
+10:12:00.690313 [info ]: Finished loading project [  0.26s]
+10:12:00.751274 [info ]: Finished parsing [  0.11s]
+10:12:00.752219 [info ]: Cached model count updated: 6 models (estimate)
+10:12:00.752223 [info ]: Cached model count updated: 6 models (accurate)
+10:12:00.754723 [info ]: Started scheduling
+10:12:00.761080 [info ]: Finished scheduling [  0.01s]
+10:12:00.909748 [info ]: Started building task graph
+10:12:00.915563 [info ]: Finished building task graph [  0.01s]
+10:12:00.924572 [info ]: Started rendering (6 nodes)
+10:12:00.925927 [info ]: Started model l0_l1.l1_reviews
+10:12:00.926995 [debug]: Started rendering model l0_l1.l1_reviews
+10:12:00.927034 [info ]: Started model l0_l1.l1_calendar
+10:12:00.927042 [debug]: Started rendering model l0_l1.l1_calendar
+10:12:00.927053 [info ]: Started model l0_l1.l1_listings
+10:12:00.927059 [debug]: Started rendering model l0_l1.l1_listings
+10:12:00.976012 [debug]: Finished rendering [  0.05s] model l0_l1.l1_calendar [success]
+10:12:00.976450 [info ]: Started analyzing (6 nodes)
+10:12:00.976462 [debug]: Started analyzing model l0_l1.l1_calendar
+10:12:00.976655 [debug]: Finished rendering [  0.05s] model l0_l1.l1_reviews [success]
+10:12:00.976665 [debug]: Started analyzing model l0_l1.l1_reviews
+10:12:00.981073 [debug]: Finished rendering [  0.05s] model l0_l1.l1_listings [success]
+10:12:00.981096 [debug]: Started analyzing model l0_l1.l1_listings
+10:12:01.119352 [info ]:  Succeeded [  0.19s] model l0_l1.l1_calendar (view)
+10:12:01.119523 [debug]: Finished analyzing [  0.14s] model l0_l1.l1_calendar [success]
+10:12:01.119539 [info ]: Started model l0_l2.fct_calendar
+10:12:01.119547 [debug]: Started rendering model l0_l2.fct_calendar
+10:12:01.119558 [info ]:  Succeeded [  0.19s] model l0_l1.l1_reviews (view)
+10:12:01.119565 [debug]: Finished analyzing [  0.14s] model l0_l1.l1_reviews [success]
+10:12:01.119573 [info ]: Started model l0_l2.fct_reviews
+10:12:01.119578 [debug]: Started rendering model l0_l2.fct_reviews
+10:12:01.120116 [debug]: Started analyzing model l0_l2.fct_calendar
+10:12:01.120126 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [success]
+10:12:01.120133 [debug]: Started analyzing model l0_l2.fct_reviews
+10:12:01.120128 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:12:01.126260 [info ]:  Succeeded [  0.01s] model l0_l2.fct_calendar (table)
+10:12:01.126286 [debug]: Finished analyzing [  0.01s] model l0_l2.fct_calendar [success]
+10:12:01.126433 [info ]:  Succeeded [  0.01s] model l0_l2.fct_reviews (table)
+10:12:01.126444 [debug]: Finished analyzing [  0.01s] model l0_l2.fct_reviews [success]
+10:12:01.143114 [info ]:  Succeeded [  0.22s] model l0_l1.l1_listings (view)
+10:12:01.143131 [debug]: Finished analyzing [  0.16s] model l0_l1.l1_listings [success]
+10:12:01.143147 [info ]: Started model l0_l2.dim_listings
+10:12:01.143155 [debug]: Started rendering model l0_l2.dim_listings
+10:12:01.143565 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:12:01.143573 [info ]: Finished rendering [  0.22s] (6 nodes, 0 skipped, 0 errors)
+10:12:01.143590 [debug]: Started analyzing model l0_l2.dim_listings
+10:12:01.144683 [info ]:  Succeeded [  0.00s] model l0_l2.dim_listings (table)
+10:12:01.144694 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:12:01.144697 [info ]: Finished analyzing [  0.17s] (6 nodes, 0 skipped, 0 errors)
+10:12:01.155591 [info ]: Cached model count updated: 6 models (accurate)
+10:23:03.452474 [info ]: Started loading project
+10:23:03.466670 [info ]: Started loading project
+10:23:03.466938 [info ]: Finished loading project [  0.01s]
+10:23:03.595275 [info ]: Started parsing
+10:23:03.623786 [info ]: Finished loading project [  0.16s]
+10:23:03.637675 [info ]: Finished parsing [  0.04s]
+10:23:03.637856 [info ]: Cached model count updated: 6 models (estimate)
+10:23:03.637862 [info ]: Cached model count updated: 6 models (accurate)
+10:23:03.637897 [info ]: Started scheduling
+10:23:03.638009 [info ]: Finished scheduling [  0.00s]
+10:23:03.732115 [info ]: Started building task graph
+10:23:03.732245 [info ]: Finished building task graph [  0.00s]
+10:23:03.732407 [info ]: Started rendering (6 nodes)
+10:23:03.732423 [info ]: Started model l0_l1.l1_reviews
+10:23:03.732440 [debug]: Started rendering model l0_l1.l1_reviews
+10:23:03.732453 [info ]: Started model l0_l1.l1_calendar
+10:23:03.732457 [debug]: Started rendering model l0_l1.l1_calendar
+10:23:03.732465 [info ]: Started model l0_l1.l1_listings
+10:23:03.732469 [debug]: Started rendering model l0_l1.l1_listings
+10:23:03.733514 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:23:03.733548 [info ]: Started analyzing (6 nodes)
+10:23:03.733558 [debug]: Started analyzing model l0_l1.l1_reviews
+10:23:03.736843 [debug]: Finished rendering [  0.00s] model l0_l1.l1_calendar [success]
+10:23:03.736867 [debug]: Started analyzing model l0_l1.l1_calendar
+10:23:03.752551 [debug]: Finished rendering [  0.02s] model l0_l1.l1_listings [success]
+10:23:03.752577 [debug]: Started analyzing model l0_l1.l1_listings
+10:23:03.762118 [info ]:  Succeeded [  0.03s] model l0_l1.l1_calendar (view)
+10:23:03.762145 [debug]: Finished analyzing [  0.03s] model l0_l1.l1_calendar [success]
+10:23:03.762161 [info ]: Started model l0_l2.fct_calendar
+10:23:03.762170 [debug]: Started rendering model l0_l2.fct_calendar
+10:23:03.763408 [debug]: Started analyzing model l0_l2.fct_calendar
+10:23:03.763408 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:23:03.764061 [info ]:  Succeeded [  0.00s] model l0_l2.fct_calendar (table)
+10:23:03.764070 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_calendar [success]
+10:23:03.766921 [error]: dbt0209: Failed to resolve function TRY_TO_NUMBER: No column ID found. Available are AIRBNB.L0.RAW__AMSTERDAM__REVIEWS__20250911.id, AIRBNB.L0.RAW__AMSTERDAM__REVIEWS__20250911.date, AIRBNB.L0.RAW__AMSTERDAM__REVIEWS__20250911.comments, AIRBNB.L0.RAW__AMSTERDAM__REVIEWS__20250911.listing_id, AIRBNB.L0.RAW__AMSTERDAM__REVIEWS__20250911.reviewer_id, AIRBNB.L0.RAW__AMSTERDAM__REVIEWS__20250911.reviewer_name
+  --> models/l1/l1_reviews.sql:10:3
+10:23:03.767079 [info ]:     Failed [  0.03s] model l0_l1.l1_reviews (view)
+10:23:03.767092 [debug]: Finished analyzing [  0.03s] model l0_l1.l1_reviews [error]
+10:23:03.767480 [info ]: Started model l0_l2.fct_reviews
+10:23:03.767490 [debug]: Started rendering model l0_l2.fct_reviews
+10:23:03.767500 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [skipped]
+10:23:03.767505 [debug]: Started analyzing model l0_l2.fct_reviews
+10:23:03.767510 [info ]:    Skipped [-------] model l0_l2.fct_reviews (table)
+10:23:03.767517 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_reviews [skipped]
+10:23:03.872735 [info ]:  Succeeded [  0.14s] model l0_l1.l1_listings (view)
+10:23:03.872757 [debug]: Finished analyzing [  0.12s] model l0_l1.l1_listings [success]
+10:23:03.872777 [info ]: Started model l0_l2.dim_listings
+10:23:03.872783 [debug]: Started rendering model l0_l2.dim_listings
+10:23:03.873381 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:23:03.873381 [debug]: Started analyzing model l0_l2.dim_listings
+10:23:03.873390 [info ]: Finished rendering [  0.14s] (6 nodes, 1 skipped, 0 errors)
+10:23:03.874649 [info ]:  Succeeded [  0.00s] model l0_l2.dim_listings (table)
+10:23:03.874662 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:23:03.874666 [info ]: Finished analyzing [  0.14s] (6 nodes, 1 skipped, 1 errors)
+10:23:03.877141 [info ]: Cached model count updated: 6 models (accurate)
+10:27:49.631451 [info ]: Started loading project
+10:27:49.637678 [info ]: Started loading project
+10:27:49.638298 [info ]: Finished loading project [  0.01s]
+10:27:49.778692 [info ]: Started parsing
+10:27:49.799559 [info ]: Finished loading project [  0.16s]
+10:27:49.812298 [info ]: Finished parsing [  0.03s]
+10:27:49.812416 [info ]: Cached model count updated: 6 models (estimate)
+10:27:49.812421 [info ]: Cached model count updated: 6 models (accurate)
+10:27:49.812440 [info ]: Started scheduling
+10:27:49.812500 [info ]: Finished scheduling [  0.00s]
+10:27:49.899749 [info ]: Started building task graph
+10:27:49.899857 [info ]: Finished building task graph [  0.00s]
+10:27:49.899976 [info ]: Started rendering (6 nodes)
+10:27:49.899985 [info ]: Started model l0_l1.l1_reviews
+10:27:49.900001 [debug]: Started rendering model l0_l1.l1_reviews
+10:27:49.900011 [info ]: Started model l0_l1.l1_calendar
+10:27:49.900014 [debug]: Started rendering model l0_l1.l1_calendar
+10:27:49.900021 [info ]: Started model l0_l1.l1_listings
+10:27:49.900026 [debug]: Started rendering model l0_l1.l1_listings
+10:27:49.902362 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:27:49.902382 [info ]: Started analyzing (6 nodes)
+10:27:49.902393 [debug]: Started analyzing model l0_l1.l1_reviews
+10:27:49.904319 [debug]: Finished rendering [  0.00s] model l0_l1.l1_calendar [success]
+10:27:49.904330 [debug]: Started analyzing model l0_l1.l1_calendar
+10:27:49.908314 [info ]:  Succeeded [  0.01s] model l0_l1.l1_calendar (view)
+10:27:49.908326 [debug]: Finished analyzing [  0.00s] model l0_l1.l1_calendar [success]
+10:27:49.908335 [info ]: Started model l0_l2.fct_calendar
+10:27:49.908340 [debug]: Started rendering model l0_l2.fct_calendar
+10:27:49.908970 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:27:49.908978 [debug]: Started analyzing model l0_l2.fct_calendar
+10:27:49.910108 [info ]:  Succeeded [  0.00s] model l0_l2.fct_calendar (table)
+10:27:49.910116 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_calendar [success]
+10:27:49.912250 [info ]:  Succeeded [  0.01s] model l0_l1.l1_reviews (view)
+10:27:49.912260 [debug]: Finished analyzing [  0.01s] model l0_l1.l1_reviews [success]
+10:27:49.912269 [info ]: Started model l0_l2.fct_reviews
+10:27:49.912275 [debug]: Started rendering model l0_l2.fct_reviews
+10:27:49.912576 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [success]
+10:27:49.912577 [debug]: Started analyzing model l0_l2.fct_reviews
+10:27:49.913328 [info ]:  Succeeded [-------] model l0_l2.fct_reviews (table)
+10:27:49.913337 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_reviews [success]
+10:27:49.916707 [debug]: Finished rendering [  0.02s] model l0_l1.l1_listings [success]
+10:27:49.916717 [debug]: Started analyzing model l0_l1.l1_listings
+10:27:50.014313 [info ]:  Succeeded [  0.11s] model l0_l1.l1_listings (view)
+10:27:50.014333 [debug]: Finished analyzing [  0.10s] model l0_l1.l1_listings [success]
+10:27:50.014345 [info ]: Started model l0_l2.dim_listings
+10:27:50.014352 [debug]: Started rendering model l0_l2.dim_listings
+10:27:50.014777 [debug]: Started analyzing model l0_l2.dim_listings
+10:27:50.014780 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:27:50.014787 [info ]: Finished rendering [  0.11s] (6 nodes, 0 skipped, 0 errors)
+10:27:50.015767 [info ]:  Succeeded [-------] model l0_l2.dim_listings (table)
+10:27:50.015778 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:27:50.015781 [info ]: Finished analyzing [  0.11s] (6 nodes, 0 skipped, 0 errors)
+10:27:50.018417 [info ]: Cached model count updated: 6 models (accurate)
+10:45:20.538488 [info ]: Started loading project
+10:45:20.543317 [info ]: Started loading project
+10:45:20.543879 [info ]: Finished loading project [  0.01s]
+10:45:20.667940 [info ]: Started parsing
+10:45:20.693301 [info ]: Finished loading project [  0.15s]
+10:45:20.707483 [info ]: Finished parsing [  0.04s]
+10:45:20.707626 [info ]: Cached model count updated: 7 models (estimate)
+10:45:20.707631 [info ]: Cached model count updated: 7 models (accurate)
+10:45:20.707650 [info ]: Started scheduling
+10:45:20.707715 [info ]: Finished scheduling [  0.00s]
+10:45:20.799302 [info ]: Started building task graph
+10:45:20.799409 [info ]: Finished building task graph [  0.00s]
+10:45:20.799490 [info ]: Started rendering (6 nodes)
+10:45:20.799499 [info ]: Started model l0_l1.l1_reviews
+10:45:20.799511 [debug]: Started rendering model l0_l1.l1_reviews
+10:45:20.799521 [info ]: Started model l0_l1.l1_calendar
+10:45:20.799525 [debug]: Started rendering model l0_l1.l1_calendar
+10:45:20.799533 [info ]: Started model l0_l1.l1_listings
+10:45:20.799537 [debug]: Started rendering model l0_l1.l1_listings
+10:45:20.802245 [info ]: Started analyzing (6 nodes)
+10:45:20.802249 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:45:20.802302 [debug]: Started analyzing model l0_l1.l1_reviews
+10:45:20.804508 [debug]: Finished rendering [  0.00s] model l0_l1.l1_calendar [success]
+10:45:20.804525 [debug]: Started analyzing model l0_l1.l1_calendar
+10:45:20.817073 [debug]: Finished rendering [  0.02s] model l0_l1.l1_listings [success]
+10:45:20.817103 [debug]: Started analyzing model l0_l1.l1_listings
+10:45:20.819794 [info ]:  Succeeded [  0.02s] model l0_l1.l1_calendar (view)
+10:45:20.819811 [debug]: Finished analyzing [  0.02s] model l0_l1.l1_calendar [success]
+10:45:20.819824 [info ]: Started model l0_l2.fct_calendar
+10:45:20.819831 [debug]: Started rendering model l0_l2.fct_calendar
+10:45:20.820375 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:45:20.820376 [debug]: Started analyzing model l0_l2.fct_calendar
+10:45:20.821080 [info ]:  Succeeded [-------] model l0_l2.fct_calendar (table)
+10:45:20.821089 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_calendar [success]
+10:45:20.826669 [info ]:  Succeeded [  0.03s] model l0_l1.l1_reviews (view)
+10:45:20.826683 [debug]: Finished analyzing [  0.02s] model l0_l1.l1_reviews [success]
+10:45:20.826696 [info ]: Started model l0_l2.fct_reviews
+10:45:20.826702 [debug]: Started rendering model l0_l2.fct_reviews
+10:45:20.827190 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [success]
+10:45:20.827194 [debug]: Started analyzing model l0_l2.fct_reviews
+10:45:20.827863 [info ]:  Succeeded [-------] model l0_l2.fct_reviews (table)
+10:45:20.827875 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_reviews [success]
+10:45:20.941587 [info ]:  Succeeded [  0.14s] model l0_l1.l1_listings (view)
+10:45:20.941605 [debug]: Finished analyzing [  0.12s] model l0_l1.l1_listings [success]
+10:45:20.941620 [info ]: Started model l0_l2.dim_listings
+10:45:20.941627 [debug]: Started rendering model l0_l2.dim_listings
+10:45:20.942089 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:45:20.942090 [debug]: Started analyzing model l0_l2.dim_listings
+10:45:20.942097 [info ]: Finished rendering [  0.14s] (6 nodes, 0 skipped, 0 errors)
+10:45:20.943104 [info ]:  Succeeded [  0.00s] model l0_l2.dim_listings (table)
+10:45:20.943117 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:45:20.943122 [info ]: Finished analyzing [  0.14s] (6 nodes, 0 skipped, 0 errors)
+10:45:20.945639 [info ]: Cached model count updated: 7 models (accurate)
+10:45:32.089020 [info ]: Started loading project
+10:45:32.092456 [info ]: Started loading project
+10:45:32.092610 [info ]: Finished loading project [  0.00s]
+10:45:32.218302 [info ]: Started parsing
+10:45:32.234540 [info ]: Finished loading project [  0.14s]
+10:45:32.245602 [info ]: Finished parsing [  0.03s]
+10:45:32.245733 [info ]: Cached model count updated: 8 models (estimate)
+10:45:32.245738 [info ]: Cached model count updated: 8 models (accurate)
+10:45:32.245753 [info ]: Started scheduling
+10:45:32.245821 [info ]: Finished scheduling [  0.00s]
+10:45:32.350148 [info ]: Started building task graph
+10:45:32.350242 [info ]: Finished building task graph [  0.00s]
+10:45:32.350328 [info ]: Started rendering (6 nodes)
+10:45:32.350336 [info ]: Started model l0_l1.l1_reviews
+10:45:32.350343 [debug]: Started rendering model l0_l1.l1_reviews
+10:45:32.350352 [info ]: Started model l0_l1.l1_calendar
+10:45:32.350356 [debug]: Started rendering model l0_l1.l1_calendar
+10:45:32.350365 [info ]: Started model l0_l1.l1_listings
+10:45:32.350370 [debug]: Started rendering model l0_l1.l1_listings
+10:45:32.352326 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:45:32.352340 [info ]: Started analyzing (6 nodes)
+10:45:32.352344 [debug]: Started analyzing model l0_l1.l1_reviews
+10:45:32.353907 [debug]: Finished rendering [  0.00s] model l0_l1.l1_calendar [success]
+10:45:32.353917 [debug]: Started analyzing model l0_l1.l1_calendar
+10:45:32.358650 [info ]:  Succeeded [  0.01s] model l0_l1.l1_calendar (view)
+10:45:32.358666 [debug]: Finished analyzing [  0.00s] model l0_l1.l1_calendar [success]
+10:45:32.358678 [info ]: Started model l0_l2.fct_calendar
+10:45:32.358684 [debug]: Started rendering model l0_l2.fct_calendar
+10:45:32.359059 [debug]: Started analyzing model l0_l2.fct_calendar
+10:45:32.359060 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:45:32.359522 [info ]:  Succeeded [-------] model l0_l2.fct_calendar (table)
+10:45:32.359531 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_calendar [success]
+10:45:32.361948 [info ]:  Succeeded [  0.01s] model l0_l1.l1_reviews (view)
+10:45:32.361961 [debug]: Finished analyzing [  0.01s] model l0_l1.l1_reviews [success]
+10:45:32.361973 [info ]: Started model l0_l2.fct_reviews
+10:45:32.361980 [debug]: Started rendering model l0_l2.fct_reviews
+10:45:32.362337 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [success]
+10:45:32.362337 [debug]: Started analyzing model l0_l2.fct_reviews
+10:45:32.362840 [info ]:  Succeeded [-------] model l0_l2.fct_reviews (table)
+10:45:32.362850 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_reviews [success]
+10:45:32.375523 [debug]: Started analyzing model l0_l1.l1_listings
+10:45:32.375525 [debug]: Finished rendering [  0.03s] model l0_l1.l1_listings [success]
+10:45:32.468727 [info ]:  Succeeded [  0.12s] model l0_l1.l1_listings (view)
+10:45:32.468746 [debug]: Finished analyzing [  0.09s] model l0_l1.l1_listings [success]
+10:45:32.468762 [info ]: Started model l0_l2.dim_listings
+10:45:32.468770 [debug]: Started rendering model l0_l2.dim_listings
+10:45:32.469254 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:45:32.469254 [debug]: Started analyzing model l0_l2.dim_listings
+10:45:32.469262 [info ]: Finished rendering [  0.12s] (6 nodes, 0 skipped, 0 errors)
+10:45:32.470212 [info ]:  Succeeded [-------] model l0_l2.dim_listings (table)
+10:45:32.470223 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:45:32.470227 [info ]: Finished analyzing [  0.12s] (6 nodes, 0 skipped, 0 errors)
+10:45:32.473436 [info ]: Cached model count updated: 8 models (accurate)
+10:45:52.910871 [info ]: Started loading project
+10:45:52.913383 [info ]: Started loading project
+10:45:52.913570 [info ]: Finished loading project [  0.00s]
+10:45:53.040237 [info ]: Started parsing
+10:45:53.060654 [info ]: Finished loading project [  0.15s]
+10:45:53.075385 [info ]: Finished parsing [  0.04s]
+10:45:53.075538 [info ]: Cached model count updated: 9 models (estimate)
+10:45:53.075543 [info ]: Cached model count updated: 9 models (accurate)
+10:45:53.075558 [info ]: Started scheduling
+10:45:53.075630 [info ]: Finished scheduling [  0.00s]
+10:45:53.164766 [info ]: Started building task graph
+10:45:53.164873 [info ]: Finished building task graph [  0.00s]
+10:45:53.164955 [info ]: Started rendering (6 nodes)
+10:45:53.164964 [info ]: Started model l0_l1.l1_reviews
+10:45:53.164971 [debug]: Started rendering model l0_l1.l1_reviews
+10:45:53.164980 [info ]: Started model l0_l1.l1_calendar
+10:45:53.164984 [debug]: Started rendering model l0_l1.l1_calendar
+10:45:53.164992 [info ]: Started model l0_l1.l1_listings
+10:45:53.164996 [debug]: Started rendering model l0_l1.l1_listings
+10:45:53.167082 [info ]: Started analyzing (6 nodes)
+10:45:53.167088 [debug]: Started analyzing model l0_l1.l1_reviews
+10:45:53.167092 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:45:53.168698 [debug]: Started analyzing model l0_l1.l1_calendar
+10:45:53.168699 [debug]: Finished rendering [  0.00s] model l0_l1.l1_calendar [success]
+10:45:53.174222 [info ]:  Succeeded [  0.01s] model l0_l1.l1_calendar (view)
+10:45:53.174240 [debug]: Finished analyzing [  0.01s] model l0_l1.l1_calendar [success]
+10:45:53.174252 [info ]: Started model l0_l2.fct_calendar
+10:45:53.174259 [debug]: Started rendering model l0_l2.fct_calendar
+10:45:53.174939 [debug]: Started analyzing model l0_l2.fct_calendar
+10:45:53.174965 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:45:53.175521 [info ]:  Succeeded [-------] model l0_l2.fct_calendar (table)
+10:45:53.175529 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_calendar [success]
+10:45:53.177029 [info ]:  Succeeded [  0.01s] model l0_l1.l1_reviews (view)
+10:45:53.177041 [debug]: Finished analyzing [  0.01s] model l0_l1.l1_reviews [success]
+10:45:53.177052 [info ]: Started model l0_l2.fct_reviews
+10:45:53.177057 [debug]: Started rendering model l0_l2.fct_reviews
+10:45:53.177420 [debug]: Started analyzing model l0_l2.fct_reviews
+10:45:53.177421 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [success]
+10:45:53.177814 [info ]:  Succeeded [-------] model l0_l2.fct_reviews (table)
+10:45:53.177821 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_reviews [success]
+10:45:53.182677 [debug]: Finished rendering [  0.02s] model l0_l1.l1_listings [success]
+10:45:53.182678 [debug]: Started analyzing model l0_l1.l1_listings
+10:45:53.247181 [info ]:  Succeeded [  0.08s] model l0_l1.l1_listings (view)
+10:45:53.247208 [debug]: Finished analyzing [  0.06s] model l0_l1.l1_listings [success]
+10:45:53.247230 [info ]: Started model l0_l2.dim_listings
+10:45:53.247238 [debug]: Started rendering model l0_l2.dim_listings
+10:45:53.247687 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:45:53.247689 [debug]: Started analyzing model l0_l2.dim_listings
+10:45:53.247696 [info ]: Finished rendering [  0.08s] (6 nodes, 0 skipped, 0 errors)
+10:45:53.248688 [info ]:  Succeeded [-------] model l0_l2.dim_listings (table)
+10:45:53.248701 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:45:53.248706 [info ]: Finished analyzing [  0.08s] (6 nodes, 0 skipped, 0 errors)
+10:45:53.251294 [info ]: Cached model count updated: 9 models (accurate)
+10:46:31.751016 [info ]: Started loading project
+10:46:31.756043 [info ]: Started loading project
+10:46:31.756251 [info ]: Finished loading project [  0.01s]
+10:46:31.953206 [info ]: Started parsing
+10:46:31.973479 [info ]: Finished loading project [  0.22s]
+10:46:31.987174 [info ]: Finished parsing [  0.03s]
+10:46:31.987316 [info ]: Cached model count updated: 9 models (estimate)
+10:46:31.987321 [info ]: Cached model count updated: 9 models (accurate)
+10:46:31.987342 [info ]: Started scheduling
+10:46:31.987411 [info ]: Finished scheduling [  0.00s]
+10:46:32.077230 [info ]: Started building task graph
+10:46:32.077333 [info ]: Finished building task graph [  0.00s]
+10:46:32.077414 [info ]: Started rendering (6 nodes)
+10:46:32.077423 [info ]: Started model l0_l1.l1_reviews
+10:46:32.077430 [debug]: Started rendering model l0_l1.l1_reviews
+10:46:32.077439 [info ]: Started model l0_l1.l1_calendar
+10:46:32.077443 [debug]: Started rendering model l0_l1.l1_calendar
+10:46:32.077451 [info ]: Started model l0_l1.l1_listings
+10:46:32.077456 [debug]: Started rendering model l0_l1.l1_listings
+10:46:32.079659 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:46:32.079689 [info ]: Started analyzing (6 nodes)
+10:46:32.079695 [debug]: Started analyzing model l0_l1.l1_reviews
+10:46:32.081250 [debug]: Finished rendering [  0.00s] model l0_l1.l1_calendar [success]
+10:46:32.081261 [debug]: Started analyzing model l0_l1.l1_calendar
+10:46:32.085760 [info ]:  Succeeded [  0.01s] model l0_l1.l1_calendar (view)
+10:46:32.085778 [debug]: Finished analyzing [  0.00s] model l0_l1.l1_calendar [success]
+10:46:32.085790 [info ]: Started model l0_l2.fct_calendar
+10:46:32.085797 [debug]: Started rendering model l0_l2.fct_calendar
+10:46:32.086191 [debug]: Started analyzing model l0_l2.fct_calendar
+10:46:32.086194 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:46:32.086625 [info ]:  Succeeded [-------] model l0_l2.fct_calendar (table)
+10:46:32.086634 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_calendar [success]
+10:46:32.094049 [debug]: Finished rendering [  0.02s] model l0_l1.l1_listings [success]
+10:46:32.094062 [debug]: Started analyzing model l0_l1.l1_listings
+10:46:32.109592 [info ]:  Succeeded [  0.03s] model l0_l1.l1_reviews (view)
+10:46:32.109609 [debug]: Finished analyzing [  0.03s] model l0_l1.l1_reviews [success]
+10:46:32.109621 [info ]: Started model l0_l2.fct_reviews
+10:46:32.109628 [debug]: Started rendering model l0_l2.fct_reviews
+10:46:32.110204 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [success]
+10:46:32.110206 [debug]: Started analyzing model l0_l2.fct_reviews
+10:46:32.111383 [info ]:  Succeeded [  0.00s] model l0_l2.fct_reviews (table)
+10:46:32.111394 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_reviews [success]
+10:46:32.160576 [info ]:  Succeeded [  0.08s] model l0_l1.l1_listings (view)
+10:46:32.160593 [debug]: Finished analyzing [  0.07s] model l0_l1.l1_listings [success]
+10:46:32.160607 [info ]: Started model l0_l2.dim_listings
+10:46:32.160613 [debug]: Started rendering model l0_l2.dim_listings
+10:46:32.161075 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:46:32.161076 [debug]: Started analyzing model l0_l2.dim_listings
+10:46:32.161082 [info ]: Finished rendering [  0.08s] (6 nodes, 0 skipped, 0 errors)
+10:46:32.162012 [info ]:  Succeeded [-------] model l0_l2.dim_listings (table)
+10:46:32.162023 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:46:32.162027 [info ]: Finished analyzing [  0.08s] (6 nodes, 0 skipped, 0 errors)
+10:46:32.164728 [info ]: Cached model count updated: 9 models (accurate)
+10:46:58.418115 [info ]: Started loading project
+10:46:58.421183 [info ]: Started loading project
+10:46:58.421836 [info ]: Finished loading project [  0.00s]
+10:46:58.556741 [info ]: Started parsing
+10:46:58.576554 [info ]: Finished loading project [  0.16s]
+10:46:58.590275 [info ]: Finished parsing [  0.03s]
+10:46:58.590417 [info ]: Cached model count updated: 9 models (estimate)
+10:46:58.590423 [info ]: Cached model count updated: 9 models (accurate)
+10:46:58.590437 [info ]: Started scheduling
+10:46:58.590498 [info ]: Finished scheduling [  0.00s]
+10:46:58.681621 [info ]: Started building task graph
+10:46:58.681716 [info ]: Finished building task graph [  0.00s]
+10:46:58.681804 [info ]: Started rendering (6 nodes)
+10:46:58.681813 [info ]: Started model l0_l1.l1_reviews
+10:46:58.681820 [debug]: Started rendering model l0_l1.l1_reviews
+10:46:58.681833 [info ]: Started model l0_l1.l1_calendar
+10:46:58.681837 [debug]: Started rendering model l0_l1.l1_calendar
+10:46:58.681846 [info ]: Started model l0_l1.l1_listings
+10:46:58.681851 [debug]: Started rendering model l0_l1.l1_listings
+10:46:58.683940 [info ]: Started analyzing (6 nodes)
+10:46:58.683953 [debug]: Started analyzing model l0_l1.l1_reviews
+10:46:58.683948 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:46:58.685806 [debug]: Started analyzing model l0_l1.l1_calendar
+10:46:58.685832 [debug]: Finished rendering [  0.00s] model l0_l1.l1_calendar [success]
+10:46:58.693491 [info ]:  Succeeded [  0.01s] model l0_l1.l1_calendar (view)
+10:46:58.693514 [debug]: Finished analyzing [  0.01s] model l0_l1.l1_calendar [success]
+10:46:58.693529 [info ]: Started model l0_l2.fct_calendar
+10:46:58.693535 [debug]: Started rendering model l0_l2.fct_calendar
+10:46:58.694317 [debug]: Started analyzing model l0_l2.fct_calendar
+10:46:58.694338 [debug]: Finished rendering [  0.00s] model l0_l2.fct_calendar [success]
+10:46:58.695024 [info ]:  Succeeded [-------] model l0_l2.fct_calendar (table)
+10:46:58.695041 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_calendar [success]
+10:46:58.696610 [info ]:  Succeeded [  0.01s] model l0_l1.l1_reviews (view)
+10:46:58.696626 [debug]: Finished analyzing [  0.01s] model l0_l1.l1_reviews [success]
+10:46:58.696636 [info ]: Started model l0_l2.fct_reviews
+10:46:58.696643 [debug]: Started rendering model l0_l2.fct_reviews
+10:46:58.697000 [debug]: Started analyzing model l0_l2.fct_reviews
+10:46:58.697003 [debug]: Finished rendering [  0.00s] model l0_l2.fct_reviews [success]
+10:46:58.697432 [info ]:  Succeeded [-------] model l0_l2.fct_reviews (table)
+10:46:58.697439 [debug]: Finished analyzing [  0.00s] model l0_l2.fct_reviews [success]
+10:46:58.701805 [debug]: Started analyzing model l0_l1.l1_listings
+10:46:58.701807 [debug]: Finished rendering [  0.02s] model l0_l1.l1_listings [success]
+10:46:58.767652 [info ]:  Succeeded [  0.08s] model l0_l1.l1_listings (view)
+10:46:58.767672 [debug]: Finished analyzing [  0.07s] model l0_l1.l1_listings [success]
+10:46:58.767687 [info ]: Started model l0_l2.dim_listings
+10:46:58.767694 [debug]: Started rendering model l0_l2.dim_listings
+10:46:58.768125 [debug]: Finished rendering [  0.00s] model l0_l2.dim_listings [success]
+10:46:58.768126 [debug]: Started analyzing model l0_l2.dim_listings
+10:46:58.768135 [info ]: Finished rendering [  0.09s] (6 nodes, 0 skipped, 0 errors)
+10:46:58.769110 [info ]:  Succeeded [-------] model l0_l2.dim_listings (table)
+10:46:58.769120 [debug]: Finished analyzing [  0.00s] model l0_l2.dim_listings [success]
+10:46:58.769123 [info ]: Finished analyzing [  0.09s] (6 nodes, 0 skipped, 0 errors)
+10:46:58.771654 [info ]: Cached model count updated: 9 models (accurate)
+10:46:59.520245 [info ]: Started loading project
+10:46:59.539144 [info ]: Started parsing
+10:46:59.555249 [info ]: Finished loading project [  0.04s]
+10:46:59.559234 [info ]: Finished parsing [  0.02s]
+10:46:59.560199 [info ]: Cached model count updated: 9 models (estimate)
+10:46:59.560206 [info ]: Cached model count updated: 9 models (accurate)
+10:46:59.560223 [info ]: Started scheduling
+10:46:59.560577 [info ]: Finished scheduling [  0.00s]
+10:46:59.560589 [warn ]: dbt1000: The selection criterion '' does not match any enabled nodes
+10:46:59.560597 [warn ]: dbt1000: Nothing to do. Try checking your model configs and model specification args
+10:46:59.653746 [info ]: Started building task graph
+10:46:59.655542 [info ]: Finished building task graph [  0.00s]
+10:46:59.655635 [debug]: Incremental compilation - 0 nodes selected: {}
+10:46:59.658310 [info ]: Cached model count updated: 9 models (accurate)
+10:47:43.334242 [info ]: Started loading project
+10:47:43.345621 [info ]: Started parsing
+10:47:43.365258 [info ]: Finished loading project [  0.03s]
+10:47:43.367269 [info ]: Finished parsing [  0.02s]
+10:47:43.368195 [info ]: Cached model count updated: 9 models (estimate)
+10:47:43.368202 [info ]: Cached model count updated: 9 models (accurate)
+10:47:43.368220 [info ]: Started scheduling
+10:47:43.369403 [info ]: Finished scheduling [  0.00s]
+10:47:43.479875 [info ]: Started building task graph
+10:47:43.479928 [info ]: Finished building task graph [  0.00s]
+10:47:43.479995 [info ]: Started rendering (1 nodes)
+10:47:43.480004 [info ]: Started model l0_l2.dim_calendar
+10:47:43.480012 [debug]: Started rendering model l0_l2.dim_calendar
+10:47:43.481309 [debug]: Finished rendering [  0.00s] model l0_l2.dim_calendar [success]
+10:47:43.481316 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+10:47:43.481325 [info ]: Started analyzing (1 nodes)
+10:47:43.481330 [debug]: Started analyzing model l0_l2.dim_calendar
+10:47:43.790991 [info ]:  Succeeded [  0.31s] model l0_l2.dim_calendar (table)
+10:47:43.791016 [debug]: Finished analyzing [  0.31s] model l0_l2.dim_calendar [success]
+10:47:43.791021 [info ]: Finished analyzing [  0.31s] (1 nodes, 0 skipped, 0 errors)
+10:47:43.791068 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_calendar"}
+10:47:43.794154 [info ]: Cached model count updated: 9 models (accurate)
+10:48:59.267571 [info ]: Started loading project
+10:48:59.277210 [info ]: Started parsing
+10:48:59.295515 [info ]: Finished loading project [  0.03s]
+10:48:59.300497 [info ]: Finished parsing [  0.02s]
+10:48:59.301401 [info ]: Cached model count updated: 9 models (estimate)
+10:48:59.301408 [info ]: Cached model count updated: 9 models (accurate)
+10:48:59.301425 [info ]: Started scheduling
+10:48:59.301461 [info ]: Finished scheduling [  0.00s]
+10:48:59.301468 [warn ]: dbt1000: The selection criterion '' does not match any enabled nodes
+10:48:59.301472 [warn ]: dbt1000: Nothing to do. Try checking your model configs and model specification args
+10:48:59.409254 [info ]: Started building task graph
+10:48:59.409290 [info ]: Finished building task graph [  0.00s]
+10:48:59.409368 [debug]: Incremental compilation - 0 nodes selected: {}
+10:48:59.411785 [info ]: Cached model count updated: 9 models (accurate)
+10:53:40.335257 [info ]: Started loading project
+10:53:40.345924 [info ]: Started parsing
+10:53:40.371374 [info ]: Finished loading project [  0.04s]
+10:53:40.376672 [info ]: Finished parsing [  0.03s]
+10:53:40.377699 [info ]: Cached model count updated: 9 models (estimate)
+10:53:40.377706 [info ]: Cached model count updated: 9 models (accurate)
+10:53:40.377727 [info ]: Started scheduling
+10:53:40.377797 [info ]: Finished scheduling [  0.00s]
+10:53:40.478736 [info ]: Started building task graph
+10:53:40.478808 [info ]: Finished building task graph [  0.00s]
+10:53:40.478885 [info ]: Started rendering (1 nodes)
+10:53:40.478893 [info ]: Started model l0_l2.dim_calendar
+10:53:40.478906 [debug]: Started rendering model l0_l2.dim_calendar
+10:53:40.480212 [debug]: Finished rendering [  0.00s] model l0_l2.dim_calendar [success]
+10:53:40.480220 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+10:53:40.480234 [info ]: Started analyzing (1 nodes)
+10:53:40.480243 [debug]: Started analyzing model l0_l2.dim_calendar
+10:53:40.525274 [info ]:  Succeeded [  0.05s] model l0_l2.dim_calendar (table)
+10:53:40.525295 [debug]: Finished analyzing [  0.05s] model l0_l2.dim_calendar [success]
+10:53:40.525301 [info ]: Finished analyzing [  0.05s] (1 nodes, 0 skipped, 0 errors)
+10:53:40.525351 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_calendar"}
+10:53:40.529463 [info ]: Cached model count updated: 9 models (accurate)
+10:53:46.535552 [info ]: Started loading project
+10:53:46.538758 [info ]: Started parsing
+10:53:46.550729 [info ]: Finished loading project [  0.02s]
+10:53:46.554023 [info ]: Finished parsing [  0.02s]
+10:53:46.554865 [info ]: Cached model count updated: 9 models (estimate)
+10:53:46.554871 [info ]: Cached model count updated: 9 models (accurate)
+10:53:46.554886 [info ]: Started scheduling
+10:53:46.554994 [info ]: Finished scheduling [  0.00s]
+10:53:46.643256 [info ]: Started building task graph
+10:53:46.643334 [info ]: Finished building task graph [  0.00s]
+10:53:46.643402 [info ]: Started rendering (4 nodes)
+10:53:46.643411 [info ]: Started model l0_l1.l1_listings
+10:53:46.643418 [debug]: Started rendering model l0_l1.l1_listings
+10:53:46.643428 [info ]: Started model l0_l1.l1_reviews
+10:53:46.643433 [debug]: Started rendering model l0_l1.l1_reviews
+10:53:46.644946 [debug]: Finished rendering [  0.00s] model l0_l1.l1_reviews [success]
+10:53:46.644959 [info ]: Started analyzing (4 nodes)
+10:53:46.644962 [debug]: Started analyzing model l0_l1.l1_reviews
+10:53:46.644970 [debug]: Finished rendering [  0.00s] model l0_l1.l1_listings [success]
+10:53:46.644975 [debug]: Started analyzing model l0_l1.l1_listings
+10:53:46.654157 [info ]:  Succeeded [  0.01s] model l0_l1.l1_reviews (view)
+10:53:46.654174 [debug]: Finished analyzing [  0.01s] model l0_l1.l1_reviews [success]
+10:53:46.654184 [info ]: Started model l0_l2.dim_city
+10:53:46.654189 [debug]: Started rendering model l0_l2.dim_city
+10:53:46.654747 [debug]: Finished rendering [  0.00s] model l0_l2.dim_city [success]
+10:53:46.654745 [debug]: Started analyzing model l0_l2.dim_city
+10:53:46.683037 [info ]:  Succeeded [  0.03s] model l0_l2.dim_city (table)
+10:53:46.683054 [debug]: Finished analyzing [  0.03s] model l0_l2.dim_city [success]
+10:53:46.737842 [info ]:  Succeeded [  0.09s] model l0_l1.l1_listings (view)
+10:53:46.737859 [debug]: Finished analyzing [  0.09s] model l0_l1.l1_listings [success]
+10:53:46.737873 [info ]: Started model l0_l2.dim_neighbourhoods
+10:53:46.737884 [debug]: Started rendering model l0_l2.dim_neighbourhoods
+10:53:46.738361 [debug]: Started analyzing model l0_l2.dim_neighbourhoods
+10:53:46.738366 [debug]: Finished rendering [  0.00s] model l0_l2.dim_neighbourhoods [success]
+10:53:46.738375 [info ]: Finished rendering [  0.09s] (4 nodes, 0 skipped, 0 errors)
+10:53:46.766828 [info ]:  Succeeded [  0.03s] model l0_l2.dim_neighbourhoods (table)
+10:53:46.766850 [debug]: Finished analyzing [  0.03s] model l0_l2.dim_neighbourhoods [success]
+10:53:46.766854 [info ]: Finished analyzing [  0.12s] (4 nodes, 0 skipped, 0 errors)
+10:53:46.766909 [debug]: Incremental compilation - 4 nodes selected: {"model.airbnb.dim_city", "model.airbnb.dim_neighbourhoods", "model.airbnb.l1_listings", "model.airbnb.l1_reviews"}
+10:53:46.769634 [info ]: Cached model count updated: 9 models (accurate)
+10:55:57.576236 [info ]: Started loading project
+10:55:57.584181 [info ]: Started parsing
+10:55:57.605469 [info ]: Finished loading project [  0.03s]
+10:55:57.611299 [info ]: Finished parsing [  0.03s]
+10:55:57.612282 [info ]: Cached model count updated: 9 models (estimate)
+10:55:57.612290 [info ]: Cached model count updated: 9 models (accurate)
+10:55:57.612323 [info ]: Started scheduling
+10:55:57.612399 [info ]: Finished scheduling [  0.00s]
+10:55:57.718996 [info ]: Started building task graph
+10:55:57.719055 [info ]: Finished building task graph [  0.00s]
+10:55:57.719153 [info ]: Started rendering (1 nodes)
+10:55:57.719161 [info ]: Started model l0_l2.dim_calendar
+10:55:57.719172 [debug]: Started rendering model l0_l2.dim_calendar
+10:55:57.719635 [info ]: Started analyzing (1 nodes)
+10:55:57.719637 [debug]: Finished rendering [  0.00s] model l0_l2.dim_calendar [success]
+10:55:57.719643 [debug]: Started analyzing model l0_l2.dim_calendar
+10:55:57.719647 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+10:55:57.740823 [info ]:  Succeeded [  0.02s] model l0_l2.dim_calendar (table)
+10:55:57.740841 [debug]: Finished analyzing [  0.02s] model l0_l2.dim_calendar [success]
+10:55:57.740846 [info ]: Finished analyzing [  0.02s] (1 nodes, 0 skipped, 0 errors)
+10:55:57.740885 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_calendar"}
+10:55:57.743752 [info ]: Cached model count updated: 9 models (accurate)
+11:04:21.651671 [info ]: Started loading project
+11:04:21.661184 [info ]: Started parsing
+11:04:21.683924 [info ]: Finished loading project [  0.03s]
+11:04:21.689547 [info ]: Finished parsing [  0.03s]
+11:04:21.690318 [info ]: Cached model count updated: 9 models (estimate)
+11:04:21.690325 [info ]: Cached model count updated: 9 models (accurate)
+11:04:21.690349 [info ]: Started scheduling
+11:04:21.690421 [info ]: Finished scheduling [  0.00s]
+11:04:21.792601 [info ]: Started building task graph
+11:04:21.792656 [info ]: Finished building task graph [  0.00s]
+11:04:21.792725 [info ]: Started rendering (1 nodes)
+11:04:21.792738 [info ]: Started model l0_l2.dim_neighbourhoods
+11:04:21.792755 [debug]: Started rendering model l0_l2.dim_neighbourhoods
+11:04:21.793254 [info ]: Started analyzing (1 nodes)
+11:04:21.793255 [debug]: Finished rendering [  0.00s] model l0_l2.dim_neighbourhoods [success]
+11:04:21.793264 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+11:04:21.793264 [debug]: Started analyzing model l0_l2.dim_neighbourhoods
+11:04:21.809450 [error]: dbt0227: No column city found. Available are AIRBNB.L0_L1.L1_LISTINGS.CITY, AIRBNB.L0_L1.L1_LISTINGS.PRICE, AIRBNB.L0_L1.L1_LISTINGS.LATITUDE, AIRBNB.L0_L1.L1_LISTINGS.LICENSE, AIRBNB.L0_L1.L1_LISTINGS.NAME, AIRBNB.L0_L1.L1_LISTINGS.SOURCE, AIRBNB.L0_L1.L1_LISTINGS.HOST_URL ..(and 41 more)
+  --> models/l2/dim_neighbourhoods.sql:2:5
+11:04:21.809509 [info ]:     Failed [  0.02s] model l0_l2.dim_neighbourhoods (table)
+11:04:21.809524 [debug]: Finished analyzing [  0.02s] model l0_l2.dim_neighbourhoods [error]
+11:04:21.809529 [info ]: Finished analyzing [  0.02s] (1 nodes, 0 skipped, 1 errors)
+11:04:21.809573 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_neighbourhoods"}
+11:04:21.812790 [info ]: Cached model count updated: 9 models (accurate)
+11:05:00.990317 [info ]: Started loading project
+11:05:00.996823 [info ]: Started parsing
+11:05:01.019144 [info ]: Finished loading project [  0.03s]
+11:05:01.024755 [info ]: Finished parsing [  0.03s]
+11:05:01.026068 [info ]: Cached model count updated: 9 models (estimate)
+11:05:01.026075 [info ]: Cached model count updated: 9 models (accurate)
+11:05:01.026095 [info ]: Started scheduling
+11:05:01.026165 [info ]: Finished scheduling [  0.00s]
+11:05:01.129372 [info ]: Started building task graph
+11:05:01.129419 [info ]: Finished building task graph [  0.00s]
+11:05:01.129484 [info ]: Started rendering (1 nodes)
+11:05:01.129492 [info ]: Started model l0_l2.dim_neighbourhoods
+11:05:01.129500 [debug]: Started rendering model l0_l2.dim_neighbourhoods
+11:05:01.129982 [info ]: Started analyzing (1 nodes)
+11:05:01.129983 [debug]: Finished rendering [  0.00s] model l0_l2.dim_neighbourhoods [success]
+11:05:01.129990 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+11:05:01.129989 [debug]: Started analyzing model l0_l2.dim_neighbourhoods
+11:05:01.136040 [info ]:  Succeeded [  0.01s] model l0_l2.dim_neighbourhoods (table)
+11:05:01.136054 [debug]: Finished analyzing [  0.01s] model l0_l2.dim_neighbourhoods [success]
+11:05:01.136058 [info ]: Finished analyzing [  0.01s] (1 nodes, 0 skipped, 0 errors)
+11:05:01.136093 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_neighbourhoods"}
+11:05:01.138341 [info ]: Cached model count updated: 9 models (accurate)
+11:06:28.826545 [info ]: Started loading project
+11:06:28.841169 [info ]: Started parsing
+11:06:28.855679 [info ]: Finished loading project [  0.03s]
+11:06:28.860559 [info ]: Finished parsing [  0.02s]
+11:06:28.861567 [info ]: Cached model count updated: 9 models (estimate)
+11:06:28.861575 [info ]: Cached model count updated: 9 models (accurate)
+11:06:28.861604 [info ]: Started scheduling
+11:06:28.861680 [info ]: Finished scheduling [  0.00s]
+11:06:28.968485 [info ]: Started building task graph
+11:06:28.968543 [info ]: Finished building task graph [  0.00s]
+11:06:28.968618 [info ]: Started rendering (1 nodes)
+11:06:28.968635 [info ]: Started model l0_l2.dim_neighbourhoods
+11:06:28.968646 [debug]: Started rendering model l0_l2.dim_neighbourhoods
+11:06:28.969743 [debug]: Finished rendering [  0.00s] model l0_l2.dim_neighbourhoods [success]
+11:06:28.969751 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+11:06:28.969765 [info ]: Started analyzing (1 nodes)
+11:06:28.969773 [debug]: Started analyzing model l0_l2.dim_neighbourhoods
+11:06:28.977251 [info ]:  Succeeded [  0.01s] model l0_l2.dim_neighbourhoods (table)
+11:06:28.977268 [debug]: Finished analyzing [  0.01s] model l0_l2.dim_neighbourhoods [success]
+11:06:28.977272 [info ]: Finished analyzing [  0.01s] (1 nodes, 0 skipped, 0 errors)
+11:06:28.977313 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_neighbourhoods"}
+11:06:28.980102 [info ]: Cached model count updated: 9 models (accurate)
+11:06:45.955505 [info ]: Started loading project
+11:06:45.963700 [info ]: Started parsing
+11:06:45.987387 [info ]: Finished loading project [  0.03s]
+11:06:45.992866 [info ]: Finished parsing [  0.03s]
+11:06:45.993906 [info ]: Cached model count updated: 9 models (estimate)
+11:06:45.993913 [info ]: Cached model count updated: 9 models (accurate)
+11:06:45.993932 [info ]: Started scheduling
+11:06:45.994009 [info ]: Finished scheduling [  0.00s]
+11:06:46.094624 [info ]: Started building task graph
+11:06:46.094675 [info ]: Finished building task graph [  0.00s]
+11:06:46.094741 [info ]: Started rendering (1 nodes)
+11:06:46.094749 [info ]: Started model l0_l2.dim_neighbourhoods
+11:06:46.094757 [debug]: Started rendering model l0_l2.dim_neighbourhoods
+11:06:46.095236 [debug]: Finished rendering [  0.00s] model l0_l2.dim_neighbourhoods [success]
+11:06:46.095244 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+11:06:46.095253 [info ]: Started analyzing (1 nodes)
+11:06:46.095257 [debug]: Started analyzing model l0_l2.dim_neighbourhoods
+11:06:46.128665 [info ]:  Succeeded [  0.03s] model l0_l2.dim_neighbourhoods (table)
+11:06:46.128685 [debug]: Finished analyzing [  0.03s] model l0_l2.dim_neighbourhoods [success]
+11:06:46.128689 [info ]: Finished analyzing [  0.03s] (1 nodes, 0 skipped, 0 errors)
+11:06:46.128735 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_neighbourhoods"}
+11:06:46.131299 [info ]: Cached model count updated: 9 models (accurate)
+11:08:03.862293 [info ]: Started loading project
+11:08:03.871107 [info ]: Started parsing
+11:08:03.887958 [info ]: Finished loading project [  0.03s]
+11:08:03.893102 [info ]: Finished parsing [  0.02s]
+11:08:03.894105 [info ]: Cached model count updated: 9 models (estimate)
+11:08:03.894113 [info ]: Cached model count updated: 9 models (accurate)
+11:08:03.894131 [info ]: Started scheduling
+11:08:03.894204 [info ]: Finished scheduling [  0.00s]
+11:08:03.992405 [info ]: Started building task graph
+11:08:03.992450 [info ]: Finished building task graph [  0.00s]
+11:08:03.992511 [info ]: Started rendering (1 nodes)
+11:08:03.992519 [info ]: Started model l0_l2.dim_city
+11:08:03.992526 [debug]: Started rendering model l0_l2.dim_city
+11:08:03.993716 [debug]: Finished rendering [  0.00s] model l0_l2.dim_city [success]
+11:08:03.993725 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+11:08:03.993733 [info ]: Started analyzing (1 nodes)
+11:08:03.993737 [debug]: Started analyzing model l0_l2.dim_city
+11:08:04.019962 [info ]:  Succeeded [  0.03s] model l0_l2.dim_city (table)
+11:08:04.019980 [debug]: Finished analyzing [  0.03s] model l0_l2.dim_city [success]
+11:08:04.019984 [info ]: Finished analyzing [  0.03s] (1 nodes, 0 skipped, 0 errors)
+11:08:04.020028 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_city"}
+11:08:04.022536 [info ]: Cached model count updated: 9 models (accurate)
+11:08:10.045709 [info ]: Started loading project
+11:08:10.052850 [info ]: Started parsing
+11:08:10.069687 [info ]: Finished loading project [  0.02s]
+11:08:10.074944 [info ]: Finished parsing [  0.02s]
+11:08:10.076019 [info ]: Cached model count updated: 9 models (estimate)
+11:08:10.076027 [info ]: Cached model count updated: 9 models (accurate)
+11:08:10.076047 [info ]: Started scheduling
+11:08:10.076124 [info ]: Finished scheduling [  0.00s]
+11:08:10.168821 [info ]: Started building task graph
+11:08:10.168876 [info ]: Finished building task graph [  0.00s]
+11:08:10.168942 [info ]: Started rendering (1 nodes)
+11:08:10.168951 [info ]: Started model l0_l2.dim_calendar
+11:08:10.168965 [debug]: Started rendering model l0_l2.dim_calendar
+11:08:10.169448 [debug]: Finished rendering [  0.00s] model l0_l2.dim_calendar [success]
+11:08:10.169457 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+11:08:10.169469 [info ]: Started analyzing (1 nodes)
+11:08:10.169476 [debug]: Started analyzing model l0_l2.dim_calendar
+11:08:10.176004 [info ]:  Succeeded [  0.01s] model l0_l2.dim_calendar (table)
+11:08:10.176022 [debug]: Finished analyzing [  0.01s] model l0_l2.dim_calendar [success]
+11:08:10.176025 [info ]: Finished analyzing [  0.01s] (1 nodes, 0 skipped, 0 errors)
+11:08:10.176069 [debug]: Incremental compilation - 1 nodes selected: {"model.airbnb.dim_calendar"}
+11:08:10.178986 [info ]: Cached model count updated: 9 models (accurate)

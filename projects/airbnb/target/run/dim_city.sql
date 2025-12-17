@@ -1,0 +1,20 @@
+
+  
+    
+
+create or replace transient  table AIRBNB.l0_l2.dim_city
+    
+    
+    
+    as (SELECT
+  "CITY",
+  "SNAPSHOT_DATE",
+  MD5(CONCAT(TRIM(LOWER("CITY")), '|', CAST("SNAPSHOT_DATE" AS VARCHAR))) AS city_snapshot_key
+FROM AIRBNB.l0_l1.l1_reviews
+GROUP BY "CITY", "SNAPSHOT_DATE"
+ORDER BY "CITY", "SNAPSHOT_DATE"
+    )
+;
+
+
+  
