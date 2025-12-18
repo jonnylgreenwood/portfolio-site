@@ -21,13 +21,15 @@ author_profile: true
     <h2 id="Overview">ETL Overview</h2>
 
     <p>
-      <a href="https://github.com/jonnylgreenwood/airbnb-snowflake-dbt/tree/main/airbnb" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-          alt="GitHub" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
-      <a href="{{ site.baseurl }}/projects/airbnb/target/" target="_blank"><img src="{{ site.baseurl }}/projects/airbnb/images/dbt Logos/dbt-bit-standalone.png"
-          alt="dbt Docs" width="20" height="20" style="vertical-align:middle; margin-right:4px;">dbt Docs ↗</a> |
-      <a href="https://app.snowflake.com/hukihlk/kvb89980/#/workspaces/ws/USER%24/PUBLIC/airbnb-snowflake-dbt" target="_blank"><img
-          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@16.2.0/icons/snowflake.svg" alt="Snowflake" width="20"
-          height="20" style="vertical-align:middle; margin-right:4px;">Snowflake ↗</a> |
+      <a href="https://github.com/jonnylgreenwood/airbnb-snowflake-dbt/tree/main/airbnb" target="_blank"><img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">Code ↗</a> |
+      <a href="{{ site.baseurl }}/projects/airbnb/target/" target="_blank"><img
+          src="{{ site.baseurl }}/projects/airbnb/images/dbt Logos/dbt-bit-standalone.png" alt="dbt Docs" width="20"
+          height="20" style="vertical-align:middle; margin-right:4px;">dbt Docs ↗</a> |
+      <a href="https://app.snowflake.com/hukihlk/kvb89980/#/workspaces/ws/USER%24/PUBLIC/airbnb-snowflake-dbt"
+        target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@16.2.0/icons/snowflake.svg"
+          alt="Snowflake" width="20" height="20" style="vertical-align:middle; margin-right:4px;">Snowflake ↗</a> |
       <a href="https://github.com/jonnylgreenwood/Business-Insights/issues/84" target="_blank"><img
           src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20"
           height="20" style="vertical-align:middle; margin-right:4px;">Project Management ↗</a>
@@ -37,7 +39,8 @@ author_profile: true
       For this project, data is sourced from multiple online files, each differing in structure, format, and quality..
       and they're updated on an ongoing basis.
       This creates complexity that requires a structured, auditable approach.
-      To manage this, I built a <strong>cloud ETL solution</strong> using <strong>Snowflake</strong>, organised into three
+      To manage this, I built a <strong>cloud ETL solution</strong> using <strong>Snowflake</strong>, organised into
+      three
       layers:
     </p>
 
@@ -50,7 +53,7 @@ author_profile: true
 
     <p>The diagram below illustrates how data moves through these layers into DuckDB storage.</p>
 
-{% include diagrams/airbnb-etl.html %}
+    {% include diagrams/airbnb-etl.html %}
 
     <p>
       This is a critical function of the first loop, covering the initial setup and reasoning.
@@ -68,8 +71,10 @@ author_profile: true
       to its original source.
     </p>
     <p>
-      A Snowflake database is created, and dbt folder structuring, sources, project files and models are used to define the schema.
-      This keeps all data in one location and simplifies access to tables later (e.g. <code>airbnb.l0.example_data</code>,
+      A Snowflake database is created, and dbt folder structuring, sources, project files and models are used to define
+      the schema.
+      This keeps all data in one location and simplifies access to tables later (e.g.
+      <code>airbnb.l0.example_data</code>,
       <code>l2.fact_reviews</code>).
     </p>
 
@@ -78,7 +83,8 @@ author_profile: true
 
     <h2 id="l0">L0 [Bronze]</h2>
     <p>
-      L0 is the raw layer. It captures the data exactly as received from the <a href="https://insideairbnb.com/get-the-data/">Inside Airbnb open-data portal</a>, plus any
+      L0 is the raw layer. It captures the data exactly as received from the <a
+        href="https://insideairbnb.com/get-the-data/">Inside Airbnb open-data portal</a>, plus any
       other data sources ingested in later cycles.
     </p>
 
@@ -87,7 +93,9 @@ author_profile: true
     <p>
       Python is used to scrape csv.gz files directly from the Inside Airbnb website, looping through the various files
       and placing them in a
-      <code>data/raw_data</code> directory. Python is then used to convert the csv.gz files to .parquet before being uploaded to Snowflake. I chose to do this in Python because handling errors is much easier than in a Snowflake CSV upload.
+      <code>data/raw_data</code> directory. Python is then used to convert the csv.gz files to .parquet before being
+      uploaded to Snowflake. I chose to do this in Python because handling errors is much easier than in a Snowflake CSV
+      upload.
     </p>
 
     <h3 id="L0-Load">L0 Load</h3>
@@ -114,7 +122,7 @@ author_profile: true
       differ,
       what each column represents, what types of data are stored, and which issues to address proactively.
     </p>
-<!-- 
+    <!-- 
     <p>This led to several key strategies:</p>
 
     <h4 id="l1-Schema-Management">Schema Management</h4>
@@ -148,7 +156,7 @@ author_profile: true
       Trips are grouped by source and placed into fact tables.
       During the push from L0 → L1, field names and data types are redefined based on earlier schema analysis.
     </p>
-<!-- 
+    <!-- 
     <h3 id="l1-Data-Validation">Data Validation</h3>
     <p>
       Record and null counts are used to ensure no data is dropped during this process.
@@ -169,10 +177,17 @@ author_profile: true
 
     <p>
       This layer contains data in its final form, ready for analytics and modelling.
-      For the first cycle, the main output is an aggregated table of all NYC taxi trips for the last twelve months, and
-      is a critical base table for future loops.
+      For the first cycle, the main output is each table suitable for reporting and analytics.
+
+      As an examle usage, two reporting tables were created:
+    <ul>
+      <li><code>l2.NEIGHBOURHOOD_PROPERTIES</code></li>
+      <li><code>l2.NEIGHBOURHOOD_MARKET_SNAPSHOT</code></li>
+    </ul>
+    The purpose of these tables was to be plugged into an excel file where occupancy, rates and rentals per area could
+    be quickly looked at and profiability could be quickly modelled:
     </p>
-<!-- 
+    <!-- 
 
     <h3 id="l2-Ingestions-and-Transformations">Ingestions and Transformations</h3>
     <p>
@@ -188,5 +203,16 @@ author_profile: true
       Record and null counts confirm no data loss during this final aggregation process.
     </p> -->
 
+    <iframe width="1100" height="500" frameborder="0" scrolling="no"
+      src="https://1drv.ms/x/c/c3ba3e2f3280a745/IQSRFsGHmRuIRKP1CgMUhCqBAd_mLZ9oZYO-ea3uP1CRFWA?em=2&AllowTyping=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+
+      <p>
+        Example Snowflake dimension table:
+
+        <a href="{{ site.baseurl }}/projects/airbnb/images/snowflake_2.png" target="_blank">
+                <img src="{{ site.baseurl }}/projects/airbnb/images/snowflake_2.png" alt="Preview"
+                    style="width:100%; height:auto; border-radius:8px;">
+            </a>
+      </p>
 
   </section>
