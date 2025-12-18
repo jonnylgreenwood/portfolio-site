@@ -17,44 +17,40 @@ author_profile: true
 <main>
 
   <h2 id="airbnb-analysis">Airbnb</h2>
-  <p>A data consulting case study using CRISP-DM and iterative framework loops, incl snowflake and dbt.</p>
+  <i>
+    <p>CRISP-DM–driven analytics using Snowflake & dbt.</p>
+  </i>
 
   <h3 id="overview">1. Overview</h3>
 
   <p>
-    After formalising working processes into the CRIPSR methodology with dbt, I wanted to use this approach on
-    cloud-based warehousing.
-
-    For this, I chose to use SnowFlake due to it's popularity in the market and my interest in learning more about it.
-  </p>
-
+    This project demonstrates how I approach data consulting engagements using a structured, iterative framework based
+    on CRISP-DM, implemented through dbt and Snowflake.</p>
   <p>
-    This project simulates how I’d work with a client exploring how to enter into the airbnb market.
-  </p>
 
-  <p>
-    The focus isn’t just on the data itself, but on the process: translating business strategy into measurable,
-    data-driven outcomes through structured frameworks, transparent ETL, and iterative refinement.
+    The case study simulates working with a client exploring entry into the Airbnb rental market. Rather than focusing
+    solely on outputs, the emphasis is on process: translating business strategy into measurable, data-driven outcomes
+    through clear frameworks, transparent ETL, and repeatable analytical loops.
   </p>
 
   <h4>Key Outcomes:</h4>
   <ul>
-    <li>Framework applied end-to-end with measurable business framing</li>
+    <li>End-to-end application of a business-led analytical framework</li>
     <li>Scalable, reproducible ETL pipeline</li>
-    <li>Reporting and modelling</li>
-    <li>Iterative improvements</li>
+    <li>Analytics-ready data models to support reporting and decision-making</li>
+    <li>Iterative refinement as business questions evolve</li>
   </ul>
 
   <h3 id="process">2. Process</h3>
 
   <p>
-    The process follows a cyclical framework, starting with the business defining its objectives.
+    The project follows a cyclical analytics framework, beginning with business objectives and looping through
+    progressively deeper levels of insight.
   </p>
 
   <p>
-    Each iteration through the cycle deepens understanding and capability: as the business matures,
-    the questions become more complex, and each loop may introduce new datasets, analytical methods,
-    or performance metrics to support decision-making.
+    Each iteration expands capability: as the business matures, questions become more granular, new datasets are
+    introduced, and metrics evolve to support more sophisticated decisions.
   </p>
 
   <div class="mermaid">
@@ -87,18 +83,18 @@ author_profile: true
   decision-making.
   </p>
 
-  <h3 id="framework-loop-1">3. Framework Loop 1 - Core Business Case and Project Setup</h3>
+  <a href="{{ site.baseurl }}/projects/airbnb/loop1.html">
+    <h3 id="framework-loop-1">3. Framework Loop 1 - Core Business Case and Project Setup</h3>
+  </a>
 
   <h4 id="core-business-case">3.1 Core Business Case</h4>
 
   <p>
     <strong>Objective:</strong>
-    Understand the volume of bookings per region, and the neighbourhoods with the most desirable properties.
-  </p>
+    Enable a prospective Airbnb investor to quickly assess revenue potential for a property purchase using market-level
+    data and simple assumptions.
 
-  <p>
-    This first loop focuses on building the analytical foundation: understanding trip patterns,
-    identifying high-demand zones, and developing a baseline for future optimisation.
+    This loop focuses on speed, clarity, and risk reduction, not precision.
   </p>
 
   <h4 id="etl-creation">3.2 ETL Creation</h4>
